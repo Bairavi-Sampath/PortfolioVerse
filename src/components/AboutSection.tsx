@@ -1,3 +1,4 @@
+import profilePhoto from "@/assets/profile-photo.jpg";
 import { Card } from "@/components/ui/card";
 import { GraduationCap, Award } from "lucide-react";
 
@@ -36,7 +37,16 @@ const AboutSection = () => {
           About Me
         </h2>
 
-        <div className="mb-16 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+            <img
+              src={profilePhoto}
+              alt="Bairavi Sampath"
+              className="relative rounded-full w-80 h-80 object-cover mx-auto border-4 border-primary/30"
+            />
+          </div>
+
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
               I am <span className="text-primary font-semibold">Bairavi Sampath</span>, currently
