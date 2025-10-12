@@ -18,10 +18,10 @@ All colors MUST be HSL.
     --popover: 220 25% 8%;
     --popover-foreground: 180 100% 98%;
 
-    --primary: 180 100% 50%;
+    --primary: 180 100% 65%;
     --primary-foreground: 220 30% 5%;
 
-    --secondary: 210 100% 60%;
+    --secondary: 210 100% 70%;
     --secondary-foreground: 220 30% 5%;
 
     --muted: 220 20% 15%;
@@ -40,8 +40,8 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Custom design tokens for AI theme */
-    --glow-cyan: 180 100% 50%;
-    --glow-blue: 210 100% 60%;
+    --glow-cyan: 180 100% 65%;
+    --glow-blue: 210 100% 70%;
     --dark-navy: 220 30% 8%;
     --darker-navy: 220 30% 5%;
     

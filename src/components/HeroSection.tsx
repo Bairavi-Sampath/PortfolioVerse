@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
+import profilePhoto from "@/assets/profile-photo.jpg";
 import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
@@ -52,6 +53,16 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 animate-fade-in-up">
+        {/* Profile Picture with Circular Mask */}
+        <div className="relative inline-block mb-8 group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-60 group-hover:opacity-90 transition-opacity animate-glow-pulse"></div>
+          <img
+            src={profilePhoto}
+            alt="Bairavi Sampath"
+            className="relative rounded-full w-40 h-40 md:w-48 md:h-48 object-cover border-4 border-primary/40"
+          />
+        </div>
+        
         <h1 className="text-5xl md:text-7xl font-bold mb-6 glow-text-cyan">
           Bairavi Sampath
         </h1>
