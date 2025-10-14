@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
-import profilePhoto from "@/assets/profile-photo.jpg";
 import { ChevronDown } from "lucide-react";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
@@ -38,16 +37,6 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 animate-fade-in-up">
-        <div className="mb-8 flex justify-center">
-          <div className="relative">
-            <img 
-              src={profilePhoto} 
-              alt="Bairavi Sampath" 
-              className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-primary shadow-[0_0_30px_rgba(6,182,212,0.5)]"
-            />
-            <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
-          </div>
-        </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-6 glow-text-cyan">
           Bairavi Sampath
         </h1>
