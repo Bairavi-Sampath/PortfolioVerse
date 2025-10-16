@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Linkedin, Github, Code, Trophy, Mail } from "lucide-react";
+import { Linkedin, Github, Code, Trophy } from "lucide-react";
 import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
@@ -32,13 +32,6 @@ const ContactSection = () => {
       color: "text-yellow-400",
       hoverColor: "hover:border-yellow-400/50",
     },
-    {
-      name: "Email",
-      icon: Mail,
-      url: "mailto:bairavi@example.com",
-      color: "text-red-400",
-      hoverColor: "hover:border-red-400/50",
-    },
   ];
 
   return (
@@ -60,7 +53,7 @@ const ContactSection = () => {
           Or connect with me on social media:
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {contacts.map((contact, index) => (
             <a
               key={index}
