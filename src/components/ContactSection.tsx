@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Linkedin, Github, Code, Trophy, Mail } from "lucide-react";
+import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
   const contacts = [
@@ -46,9 +47,17 @@ const ContactSection = () => {
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 glow-text-cyan">
           Get In Touch
         </h2>
-        <p className="text-center text-muted-foreground mb-16 text-lg max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
           I'm always excited to connect with fellow developers, AI enthusiasts, and potential collaborators.
           Feel free to reach out!
+        </p>
+
+        <div className="max-w-2xl mx-auto mb-16">
+          <ContactForm />
+        </div>
+
+        <p className="text-center text-muted-foreground mb-8 text-lg">
+          Or connect with me on social media:
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
