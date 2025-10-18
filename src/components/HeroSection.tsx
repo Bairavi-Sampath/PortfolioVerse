@@ -3,7 +3,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 import { ChevronDown } from "lucide-react";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
-  const fullText = "AI & ML Enthusiast | Web Developer | Future AI Engineer";
+  const fullText = "AI & ML Enthusiast | Web Developer | Aspiring AI Engineer";
   useEffect(() => {
     let currentIndex = 0;
     const interval = setInterval(() => {
