@@ -1,6 +1,9 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
+import cppCert from "@/assets/cert-cpp.png";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { GraduationCap, Award } from "lucide-react";
+import { useState } from "react";
 
 const AboutSection = () => {
   const education = [
@@ -25,10 +28,12 @@ const AboutSection = () => {
   ];
 
   const certifications = [
-    { name: "IIT Bombay Spoken Tutorial (C++)", date: "Dec 2024" },
-    { name: "IIT Bombay Spoken Tutorial (Advanced C++, Python 3.4.3)", date: "May 2025" },
-    { name: "SkillRack (Python and SQL)", date: "Jul 2025" },
+    { name: "IIT Bombay Spoken Tutorial (C++)", date: "Dec 2024", image: cppCert },
+    { name: "IIT Bombay Spoken Tutorial (Advanced C++, Python 3.4.3)", date: "May 2025", image: "" },
+    { name: "SkillRack (Python and SQL)", date: "Jul 2025", image: "" },
   ];
+
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
 
   return (
     <section id="about" className="py-20 px-4">
@@ -90,13 +95,29 @@ const AboutSection = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {certifications.map((cert, index) => (
-              <Card
-                key={index}
-                className="p-6 gradient-card border-secondary/20 hover:border-secondary/50 transition-all duration-300 hover:glow-border-blue"
-              >
-                <p className="text-foreground font-semibold mb-2">{cert.name}</p>
-                <p className="text-muted-foreground text-sm">{cert.date}</p>
-              </Card>
+              <Dialog key={index}>
+                <DialogTrigger asChild>
+                  <Card
+                    className="p-6 gradient-card border-secondary/20 hover:border-secondary/50 transition-all duration-300 hover:glow-border-blue cursor-pointer"
+                    onClick={() => cert.image && setSelectedCert(cert.image)}
+                  >
+                    <p className="text-foreground font-semibold mb-2">{cert.name}</p>
+                    <p className="text-muted-foreground text-sm">{cert.date}</p>
+                    {cert.image && (
+                      <p className="text-primary text-xs mt-2">Click to view certificate</p>
+                    )}
+                  </Card>
+                </DialogTrigger>
+                {cert.image && (
+                  <DialogContent className="max-w-4xl">
+                    <img 
+                      src={cert.image} 
+                      alt={cert.name}
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </DialogContent>
+                )}
+              </Dialog>
             ))}
           </div>
         </div>
