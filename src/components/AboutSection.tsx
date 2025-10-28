@@ -1,9 +1,5 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
-import cppCert from "@/assets/cert-cpp.png";
-import advancedCppCert from "@/assets/cert-advanced-cpp.jpg";
-import pythonCert from "@/assets/cert-python.jpg";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { GraduationCap, Award } from "lucide-react";
 
 const AboutSection = () => {
@@ -29,9 +25,9 @@ const AboutSection = () => {
   ];
 
   const certifications = [
-    { name: "IIT Bombay Spoken Tutorial (C++)", date: "Dec 2024", images: [cppCert] },
-    { name: "IIT Bombay Spoken Tutorial (Advanced C++, Python 3.4.3)", date: "May 2025", images: [advancedCppCert, pythonCert] },
-    { name: "SkillRack (Python and SQL)", date: "Jul 2025", images: [] },
+    { name: "IIT Bombay Spoken Tutorial (C++)", date: "Dec 2024" },
+    { name: "IIT Bombay Spoken Tutorial (Advanced C++, Python 3.4.3)", date: "May 2025" },
+    { name: "SkillRack (Python and SQL)", date: "Jul 2025" },
   ];
 
   return (
@@ -94,33 +90,13 @@ const AboutSection = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {certifications.map((cert, index) => (
-              <Dialog key={index}>
-                <DialogTrigger asChild>
-                  <Card
-                    className="p-6 gradient-card border-secondary/20 hover:border-secondary/50 transition-all duration-300 hover:glow-border-blue cursor-pointer"
-                  >
-                    <p className="text-foreground font-semibold mb-2">{cert.name}</p>
-                    <p className="text-muted-foreground text-sm">{cert.date}</p>
-                    {cert.images.length > 0 && (
-                      <p className="text-primary text-xs mt-2">Click to view certificate{cert.images.length > 1 ? 's' : ''}</p>
-                    )}
-                  </Card>
-                </DialogTrigger>
-                {cert.images.length > 0 && (
-                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-                    <div className="space-y-4">
-                      {cert.images.map((img, imgIndex) => (
-                        <img 
-                          key={imgIndex}
-                          src={img} 
-                          alt={`${cert.name} - Certificate ${imgIndex + 1}`}
-                          className="w-full h-auto rounded-lg"
-                        />
-                      ))}
-                    </div>
-                  </DialogContent>
-                )}
-              </Dialog>
+              <Card
+                key={index}
+                className="p-6 gradient-card border-secondary/20 hover:border-secondary/50 transition-all duration-300 hover:glow-border-blue"
+              >
+                <p className="text-foreground font-semibold mb-2">{cert.name}</p>
+                <p className="text-muted-foreground text-sm">{cert.date}</p>
+              </Card>
             ))}
           </div>
         </div>
