@@ -38,7 +38,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 animate-fade-in-up">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 glow-text-cyan">
+        <h1 className="text-5xl font-bold mb-6 glow-text-cyan md:text-5xl">
           Bairavi Sampath
         </h1>
         <div className="h-16 md:h-12 mb-8">
@@ -50,28 +50,19 @@ const HeroSection = () => {
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
           Welcome to my portfolio. I'm passionate about building intelligent systems and creating beautiful web experiences.
         </p>
-        <Button 
-          asChild
-          size="lg"
-          className="mb-12"
-        >
-          <a 
-            href="/resume_Bairavi.docx" 
-            download="Bairavi_Sampath_Resume.docx"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <Button asChild size="lg" className="mb-12">
+          <a href="/resume_Bairavi.docx" download="Bairavi_Sampath_Resume.docx" target="_blank" rel="noopener noreferrer">
             <Download className="mr-2 h-5 w-5" />
             Download Resume
           </a>
         </Button>
         <div className="mt-8">
           <a href="#about" onClick={e => {
-            e.preventDefault();
-            document.querySelector("#about")?.scrollIntoView({
-              behavior: "smooth"
-            });
-          }} className="inline-block">
+          e.preventDefault();
+          document.querySelector("#about")?.scrollIntoView({
+            behavior: "smooth"
+          });
+        }} className="inline-block">
             <ChevronDown size={40} className="text-primary animate-bounce cursor-pointer hover:scale-110 transition-transform" />
           </a>
         </div>
