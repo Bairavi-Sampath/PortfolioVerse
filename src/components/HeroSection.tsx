@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
-import { ChevronDown, Eye } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const fullText = "AI & ML Enthusiast | Web Developer | Aspiring AI Engineer";
@@ -47,15 +46,9 @@ const HeroSection = () => {
             <span className="animate-pulse"> | Python</span>
           </p>
         </div>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
           Welcome to my portfolio. I'm passionate about building intelligent systems and creating beautiful web experiences.
         </p>
-        <Button asChild size="lg" className="mb-12">
-          <a href="/resume_Bairavi.docx" target="_blank" rel="noopener noreferrer">
-            <Eye className="mr-2 h-5 w-5" />
-            View Resume
-          </a>
-        </Button>
         <div className="mt-8">
           <a href="#about" onClick={e => {
           e.preventDefault();
