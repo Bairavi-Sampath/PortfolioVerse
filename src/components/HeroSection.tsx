@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const fullText = "AI & ML Enthusiast | Web Developer | Aspiring AI Engineer";
@@ -49,6 +50,16 @@ const HeroSection = () => {
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
           Welcome to my portfolio. I'm passionate about building intelligent systems and creating beautiful web experiences.
         </p>
+        <Button 
+          asChild
+          size="lg"
+          className="mb-8"
+        >
+          <a href="/resume_Bairavi.docx" download="Bairavi_Sampath_Resume.docx">
+            <Download className="mr-2 h-5 w-5" />
+            Download Resume
+          </a>
+        </Button>
         <a href="#about" onClick={e => {
         e.preventDefault();
         document.querySelector("#about")?.scrollIntoView({

@@ -8,36 +8,66 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Light theme colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 180 100% 40%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 100% 45%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 180 100% 35%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 180 100% 40%;
+    --radius: 0.75rem;
+
+    /* Custom design tokens for light theme */
+    --glow-cyan: 180 100% 40%;
+    --glow-blue: 210 100% 45%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(210, 30%, 90%) 50%, hsl(180, 30%, 85%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(210, 40%, 98%) 100%);
+    
+    /* Shadows */
+    --shadow-glow-cyan: 0 0 20px hsla(180, 100%, 40%, 0.2), 0 0 40px hsla(180, 100%, 40%, 0.1);
+    --shadow-glow-blue: 0 0 20px hsla(210, 100%, 45%, 0.2), 0 0 40px hsla(210, 100%, 45%, 0.1);
+    --shadow-card: 0 4px 16px hsla(180, 100%, 40%, 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
     /* Dark AI-themed portfolio colors */
     --background: 220 30% 5%;
     --foreground: 180 100% 98%;
-
     --card: 220 25% 8%;
     --card-foreground: 180 100% 98%;
-
     --popover: 220 25% 8%;
     --popover-foreground: 180 100% 98%;
-
     --primary: 180 100% 65%;
     --primary-foreground: 220 30% 5%;
-
     --secondary: 210 100% 70%;
     --secondary-foreground: 220 30% 5%;
-
     --muted: 220 20% 15%;
     --muted-foreground: 180 30% 70%;
-
     --accent: 180 100% 50%;
     --accent-foreground: 220 30% 5%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 180 100% 98%;
-
     --border: 180 50% 25%;
     --input: 220 20% 15%;
     --ring: 180 100% 50%;
-
-    --radius: 0.75rem;
 
     /* Custom design tokens for AI theme */
     --glow-cyan: 180 100% 65%;
@@ -53,18 +83,6 @@ All colors MUST be HSL.
     --shadow-glow-cyan: 0 0 30px hsla(180, 100%, 50%, 0.3), 0 0 60px hsla(180, 100%, 50%, 0.1);
     --shadow-glow-blue: 0 0 30px hsla(210, 100%, 60%, 0.3), 0 0 60px hsla(210, 100%, 60%, 0.1);
     --shadow-card: 0 8px 32px hsla(180, 100%, 50%, 0.1);
-    
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
