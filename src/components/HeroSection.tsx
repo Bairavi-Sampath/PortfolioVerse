@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
-import { ChevronDown, Download } from "lucide-react";
+import { ChevronDown, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
@@ -51,9 +51,9 @@ const HeroSection = () => {
           Welcome to my portfolio. I'm passionate about building intelligent systems and creating beautiful web experiences.
         </p>
         <Button asChild size="lg" className="mb-12">
-          <a href="/resume_Bairavi.docx" download="Bairavi_Sampath_Resume.docx" target="_blank" rel="noopener noreferrer">
-            <Download className="mr-2 h-5 w-5" />
-            Download Resume
+          <a href="/resume_Bairavi.docx" target="_blank" rel="noopener noreferrer">
+            <Eye className="mr-2 h-5 w-5" />
+            View Resume
           </a>
         </Button>
         <div className="mt-8">
