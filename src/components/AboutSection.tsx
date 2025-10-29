@@ -46,7 +46,7 @@ const AboutSection = () => {
               pursuing B.E in CSE (Artificial Intelligence and Machine Learning) at KPR Institute
               of Engineering and Technology, Coimbatore.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">I'm passionate about AI engineer and web development, with hands-on experience in building intelligent systems and front-end web projects. I love exploring cutting-edge technologies and turning ideas into reality.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">I'm passionate about AI engineer and web development, with hands-on experience in building intelligent systems and front-end web projects .I’m keen to explore emerging technologies and develop my skills by turning creative ideas into practical solutions.</p>
           </div>
         </div>
 
