@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { Linkedin, Github, Code, Trophy } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Linkedin, Github, Code, Trophy, Download } from "lucide-react";
 import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
@@ -37,9 +38,21 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 px-4 bg-card/30">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 glow-text-cyan">
-          Get In Touch
-        </h2>
+        <div className="flex flex-col items-center gap-4 mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-center glow-text-cyan">
+            Get In Touch
+          </h2>
+          <Button 
+            asChild
+            variant="outline" 
+            className="gradient-card border-primary/30 hover:border-primary/60 hover:glow-border-cyan"
+          >
+            <a href="/resume_Bairavi.docx" download className="flex items-center gap-2">
+              <Download size={18} />
+              Download Resume
+            </a>
+          </Button>
+        </div>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
           I'm always excited to connect with fellow developers, AI enthusiasts, and potential collaborators.
           Feel free to reach out!
