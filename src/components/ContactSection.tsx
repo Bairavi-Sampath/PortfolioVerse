@@ -47,9 +47,9 @@ const ContactSection = () => {
             variant="outline" 
             className="gradient-card border-primary/30 hover:border-primary/60 hover:glow-border-cyan"
           >
-            <a href="/resume_Bairavi.docx" download className="flex items-center gap-2">
+            <a href="/resume_Bairavi.docx" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Download size={18} />
-              Download Resume
+              View Resume
             </a>
           </Button>
         </div>
