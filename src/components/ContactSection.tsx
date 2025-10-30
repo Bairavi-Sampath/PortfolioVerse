@@ -45,7 +45,7 @@ const ContactSection = () => {
           <Button 
             asChild
             variant="outline" 
-            className="gradient-card border-primary/30 hover:border-primary/60 hover:glow-border-cyan"
+            className="gradient-card border-primary/30 hover:border-primary/60 hover:glow-border-cyan animate-pulse hover:animate-none"
           >
             <a href="/resume_Bairavi.docx" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Download size={18} />
