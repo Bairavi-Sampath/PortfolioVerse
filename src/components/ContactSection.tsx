@@ -38,21 +38,9 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 px-4 bg-card/30">
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col items-center gap-4 mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-center glow-text-cyan">
-            Get In Touch
-          </h2>
-          <Button 
-            asChild
-            variant="outline" 
-            className="gradient-card border-primary/30 hover:border-primary/60 hover:glow-border-cyan animate-pulse hover:animate-none"
-          >
-            <a href="/resume_Bairavi.docx" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              <Download size={18} />
-              View Resume
-            </a>
-          </Button>
-        </div>
+        <h2 className="text-4xl md:text-5xl font-bold text-center glow-text-cyan mb-8">
+          Get In Touch
+        </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
           I'm always excited to connect with fellow developers, AI enthusiasts, and potential collaborators.
           Feel free to reach out!
