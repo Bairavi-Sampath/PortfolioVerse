@@ -6,25 +6,25 @@ const SkillsSection = () => {
     {
       title: "Languages",
       icon: Code2,
-      skills: ["C", "Python"],
+      skills: ["C/C++", "Python", "Java", "SQL"],
       color: "text-primary",
     },
     {
       title: "Machine Learning",
       icon: Brain,
-      skills: ["Scikit-learn", "TensorFlow", "PyTorch"],
+      skills: ["pandas", "numpy", "Scikit-Learn"],
       color: "text-secondary",
     },
     {
       title: "Platforms",
       icon: Database,
-      skills: ["GitHub", "Colab", "Kaggle", "Matlab", "Tinkercad"],
+      skills: ["GitHub", "Google Colab", "Docker"],
       color: "text-primary",
     },
     {
       title: "Web Development",
       icon: Globe,
-      skills: ["HTML", "CSS"],
+      skills: ["React", "Node.js", "PostgreSQL", "MongoDB", "Android Studio"],
       color: "text-secondary",
     },
   ];

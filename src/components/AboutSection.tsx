@@ -6,12 +6,12 @@ const AboutSection = () => {
     institution: "KPR Institute of Engineering and Technology, Coimbatore",
     degree: "B.E CSE (Artificial Intelligence and Machine Learning)",
     period: "2024 – 2028",
-    grade: "CGPA: 8.6/10 (till 2nd sem)"
+    grade: "CGPA: 8.7/10 (till 3rd sem)"
   }, {
     institution: "Erode District Government Model School",
     degree: "HSC (Maths with Computer Science)",
     period: "2022 – 2024",
-    grade: "84.17%"
+    grade: "84.2%"
   }, {
     institution: "Government Higher Secondary School, Vellankovil",
     degree: "SSLC",
