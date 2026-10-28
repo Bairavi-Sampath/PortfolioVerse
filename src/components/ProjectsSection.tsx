@@ -1,114 +1,165 @@
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Github, FolderGit2, ShieldAlert, Video, Sparkles, BrainCircuit } from "lucide-react";
 
 const ProjectsSection = () => {
   const projects = [
     {
       title: "Mushroom Classification Model",
+      category: "Machine Learning & AI",
+      badgeIcon: BrainCircuit,
       description:
-        "Built a supervised learning model to classify mushrooms as edible or poisonous using Random Forest. Achieved ~95% accuracy after data preprocessing and evaluation with confusion matrix and classification report.",
+        "Built a supervised learning model to classify mushrooms as edible or poisonous using Random Forest. Achieved ~95% accuracy after thorough data preprocessing, exploratory data analysis, and evaluation with confusion matrix and classification report.",
       tech: ["Python", "Scikit-learn", "Pandas", "Seaborn", "Matplotlib", "Google Colab"],
       github: "https://github.com/Bairavi-Sampath/Mushroom-Classification_model",
-      live: "#",
-      gradient: "from-primary/20 to-secondary/20",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "Designed a responsive portfolio website implementing web development, including a contact form with emailing capabilities. Built with modern tech stack for optimal performance and user experience.",
-      tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "EmailJS"],
-      github: "https://github.com/Bairavi-Sampath/PortfolioVerse",
-      live: "#",
-      gradient: "from-secondary/20 to-primary/20",
+      live: null,
+      highlight: "~95% Classification Accuracy",
     },
     {
       title: "Smart Tourists Safety Monitoring System",
+      category: "AI & Geofencing / Full Stack",
+      badgeIcon: ShieldAlert,
       description:
-        "Developed an AI-enabled real-time safety solution for tourists incorporating Aadhaar KYC, SOS alerts, Danger Zones, and Real-Time Disaster Alerts using geofencing and AI.",
-      tech: ["React", "Leaflet", "OpenStreetMap", "FastAPI", "PostgreSQL", "Gemini API", "Twilio"],
-      github: "#",
-      live: "#",
-      gradient: "from-primary/20 to-secondary/20",
+        "Developed an AI-enabled real-time safety solution for tourists incorporating Aadhaar KYC, emergency SOS alerts, automated Danger Zone geofencing, and Real-Time Disaster Alerts powered by intelligent LLM integration.",
+      tech: [
+        "React",
+        "Leaflet",
+        "OpenStreetMap",
+        "FastAPI",
+        "PostgreSQL (PostGIS)",
+        "Gemini API",
+        "Twilio",
+        "OpenWeather API",
+      ],
+      github: "https://github.com/Bairavi-Sampath",
+      live: null,
+      highlight: "Real-time Geofencing & Gemini AI",
     },
     {
       title: "ICU Video Conference System",
+      category: "Healthcare & WebRTC",
+      badgeIcon: Video,
       description:
-        "Built an ICU healthcare platform connecting nurses, patients and families through scheduled video calls, real-time patient monitoring and clinical documentation for remote critical care.",
+        "Built an ICU healthcare platform connecting nurses, patients, and families through scheduled video calls, real-time patient status monitoring, and clinical documentation—enabling remote communication and reducing barriers in critical care settings.",
       tech: ["React", "Next.js", "Talky.io", "Neon PostgreSQL"],
-      github: "#",
-      live: "#",
-      gradient: "from-secondary/20 to-primary/20",
+      github: "https://github.com/Bairavi-Sampath",
+      live: null,
+      highlight: "Tele-Health & Remote Critical Care",
+    },
+    {
+      title: "Portfolio Website (PortfolioVerse)",
+      category: "Full Stack Web",
+      badgeIcon: Sparkles,
+      description:
+        "Designed a responsive, modern portfolio website implementing full web development best practices, dark/light theme switching, and a dynamic interactive contact form with emailing capabilities.",
+      tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "EmailJS"],
+      github: "https://github.com/Bairavi-Sampath/PortfolioVerse",
+      live: "#home",
+      highlight: "Dark / Light Mode & EmailJS",
     },
     {
       title: "Netflix-Inspired Webpage",
+      category: "Frontend Web (Internship)",
+      badgeIcon: FolderGit2,
       description:
-        "Built a responsive Netflix-inspired website during internship, showcasing modern UI design with smooth navigation and engaging visual layout. Demonstrates proficiency in front-end development fundamentals.",
-      tech: ["HTML", "CSS"],
+        "Built a responsive Netflix-inspired web application during internship at Novitech R&D Pvt. Ltd., showcasing modern UI layout, fluid navigation, and responsive media streaming aesthetic.",
+      tech: ["HTML5", "CSS3", "JavaScript"],
       github: "https://github.com/Bairavi-Sampath/Netflix-inspired-Webpage",
       live: "https://netflix-inspired-webpage.vercel.app/",
-      gradient: "from-primary/20 to-secondary/20",
+      highlight: "Deployed on Vercel",
     },
   ];
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-20 px-4 bg-muted/20 dark:bg-card/20">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 glow-text-cyan">
-          Featured Projects
-        </h2>
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold mb-3">
+            <FolderGit2 className="w-3.5 h-3.5" />
+            Engineering Portfolio
+          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground glow-text-cyan">
+            Featured Projects
+          </h2>
+          <div className="w-16 h-1 bg-primary rounded-full mt-3"></div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="p-6 gradient-card border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] group"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-30 transition-opacity rounded-lg`}></div>
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/30"
+          {projects.map((project, index) => {
+            const Icon = project.badgeIcon;
+            return (
+              <Card
+                key={index}
+                className="group relative flex flex-col justify-between border-border/80 bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+              >
+                <div className="h-1.5 w-full bg-gradient-to-r from-primary to-secondary"></div>
+
+                <CardHeader className="p-6 pb-3">
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-primary">
+                      <Icon className="w-4 h-4" />
+                      <span>{project.category}</span>
+                    </div>
+                    {project.highlight && (
+                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
+                        {project.highlight}
+                      </span>
+                    )}
+                  </div>
+
+                  <CardTitle className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </CardTitle>
+                </CardHeader>
+
+                <CardContent className="px-6 pb-6 space-y-5">
+                  <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </CardDescription>
+
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <Badge
+                        key={techIndex}
+                        variant="secondary"
+                        className="text-xs px-2.5 py-0.5 bg-muted/80 text-foreground"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3 pt-3 border-t border-border/60">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-primary/40 hover:bg-primary/10 text-foreground font-medium"
+                      asChild
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary/50 text-primary hover:bg-primary/10"
-                    asChild
-                  >
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github size={16} className="mr-2" />
-                      View Code
-                    </a>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-secondary/50 text-secondary hover:bg-secondary/10"
-                    asChild
-                  >
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={16} className="mr-2" />
-                      Live Project
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          ))}
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github size={16} className="mr-1.5" />
+                        Code Repository
+                      </a>
+                    </Button>
+
+                    {project.live && (
+                      <Button
+                        size="sm"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                        asChild
+                      >
+                        <a href={project.live} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink size={16} className="mr-1.5" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

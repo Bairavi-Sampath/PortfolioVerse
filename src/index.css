@@ -8,40 +8,41 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Light theme colors */
-    --background: 0 0% 100%;
+    /* Premium Light Theme Colors */
+    --background: 210 30% 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 180 100% 40%;
+    --primary: 185 95% 34%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 100% 45%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 180 100% 35%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: 215 90% 48%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 30% 94%;
+    --muted-foreground: 215.4 16.3% 40%;
+    --accent: 185 95% 34%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 180 100% 40%;
+    --border: 214.3 25% 88%;
+    --input: 214.3 25% 88%;
+    --ring: 185 95% 34%;
     --radius: 0.75rem;
 
-    /* Custom design tokens for light theme */
-    --glow-cyan: 180 100% 40%;
-    --glow-blue: 210 100% 45%;
+    /* Custom tokens for light theme */
+    --glow-cyan: 185 95% 34%;
+    --glow-blue: 215 90% 48%;
+    --hero-overlay: 210 30% 98%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(210, 30%, 90%) 50%, hsl(180, 30%, 85%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(210, 40%, 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(210, 30%, 93%) 50%, hsl(185, 30%, 90%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(210, 30%, 97%) 100%);
     
     /* Shadows */
-    --shadow-glow-cyan: 0 0 20px hsla(180, 100%, 40%, 0.2), 0 0 40px hsla(180, 100%, 40%, 0.1);
-    --shadow-glow-blue: 0 0 20px hsla(210, 100%, 45%, 0.2), 0 0 40px hsla(210, 100%, 45%, 0.1);
-    --shadow-card: 0 4px 16px hsla(180, 100%, 40%, 0.1);
+    --shadow-glow-cyan: 0 4px 20px hsla(185, 95%, 34%, 0.15);
+    --shadow-glow-blue: 0 4px 20px hsla(215, 90%, 48%, 0.15);
+    --shadow-card: 0 4px 20px hsla(220, 20%, 20%, 0.05);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,8 +73,7 @@ All colors MUST be HSL.
     /* Custom design tokens for AI theme */
     --glow-cyan: 180 100% 65%;
     --glow-blue: 210 100% 70%;
-    --dark-navy: 220 30% 8%;
-    --darker-navy: 220 30% 5%;
+    --hero-overlay: 220 30% 5%;
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(220, 30%, 5%) 0%, hsl(220, 40%, 15%) 50%, hsl(180, 50%, 20%) 100%);
@@ -92,7 +92,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-family: 'Poppins', sans-serif;
   }
 
@@ -103,18 +103,34 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glow-text-cyan {
+    @apply text-primary font-bold;
+  }
+
+  .dark .glow-text-cyan {
     text-shadow: 0 0 20px hsl(var(--glow-cyan)), 0 0 40px hsl(var(--glow-cyan));
   }
 
   .glow-text-blue {
+    @apply text-secondary font-bold;
+  }
+
+  .dark .glow-text-blue {
     text-shadow: 0 0 20px hsl(var(--glow-blue)), 0 0 40px hsl(var(--glow-blue));
   }
 
   .glow-border-cyan {
+    box-shadow: 0 0 16px hsla(185, 95%, 34%, 0.25);
+  }
+
+  .dark .glow-border-cyan {
     box-shadow: 0 0 20px hsla(180, 100%, 50%, 0.5), inset 0 0 20px hsla(180, 100%, 50%, 0.1);
   }
 
   .glow-border-blue {
+    box-shadow: 0 0 16px hsla(215, 90%, 48%, 0.25);
+  }
+
+  .dark .glow-border-blue {
     box-shadow: 0 0 20px hsla(210, 100%, 60%, 0.5), inset 0 0 20px hsla(210, 100%, 60%, 0.1);
   }
 
