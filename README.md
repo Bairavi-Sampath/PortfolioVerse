@@ -1,61 +1,85 @@
+# PortfolioVerse 🌌
 
+> Personal portfolio website of **Bairavi S** — Computer Science Undergraduate specializing in Artificial Intelligence, Machine Learning, and Full Stack Web Development.
 
-## Project info
+[![Live Demo](https://img.shields.io/badge/Live-PortfolioVerse-00e5ff?style=for-the-badge&logo=vercel)](http://localhost:8080)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 
+---
 
+## ✨ Features
 
-## How can I edit this code?
+- 🌓 **Dynamic Theme Switching**: Seamless dark and light modes with custom CSS tokens, glow accents, and persistence.
+- 📬 **Interactive Web3Forms Integration**: Fully functional contact form with client-side Zod validation, dual toast notifications, and automated email delivery.
+- 📜 **Interactive Credentials**: Modal dialog view for certifications and academic achievements with full-screen previews and direct download actions.
+- 🚀 **Featured Projects**: Showcase of machine learning classifiers, AI geofencing safety systems, ICU telemedicine platforms, and modern frontend replicas.
+- 📱 **Fully Responsive**: Mobile-first design optimized for phones, tablets, and wide desktop displays.
+- ⚡ **Optimized Performance**: Built with Vite and TypeScript for near-instant HMR and sub-second page loads.
 
-There are several ways of editing your application.
+---
 
+## 🛠️ Tech Stack
 
+- **Framework**: React 18 + Vite 5 + TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui, PostCSS, Lucide Icons
+- **Theme**: `next-themes` (Class-based dark/light mode toggle)
+- **Forms**: React Hook Form, Zod schema validation, Web3Forms API
+- **Animation**: Tailwind Animate, custom keyframe glow pulses
 
-**Use your preferred IDE**
+---
 
+## 🚀 Getting Started Locally
 
+### Prerequisites
+- Node.js (version 18+ recommended)
+- npm or yarn
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Bairavi-Sampath/PortfolioVerse.git
+   cd PortfolioVerse
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. **Configure Environment Variables**:
+   Copy `.env.example` to `.env` and specify your Web3Forms access key:
+   ```bash
+   cp .env.example .env
+   ```
+   *Edit `.env`*:
+   ```env
+   VITE_WEB3FORMS_ACCESS_KEY=your_web3forms_access_key_here
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:8080` in your browser.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+5. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📬 Contact & Connect
 
-**Use GitHub Codespaces**
+- **Email**: [bairavisampath29@gmail.com](mailto:bairavisampath29@gmail.com)
+- **GitHub**: [@Bairavi-Sampath](https://github.com/Bairavi-Sampath)
+- **Location**: Erode, Tamil Nadu, India
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-
-
-
+## 📄 License
+This project is open source and available under the [MIT License](LICENSE).
