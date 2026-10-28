@@ -7,34 +7,47 @@ const ProjectsSection = () => {
     {
       title: "Mushroom Classification Model",
       description:
-        "ML model to classify mushrooms as edible or poisonous using Random Forest algorithm with 95% accuracy.",
-      tech: ["Python", "Scikit-learn", "Pandas", "Seaborn", "Matplotlib"],
-      github: "#",
+        "Built a supervised learning model to classify mushrooms as edible or poisonous using Random Forest. Achieved ~95% accuracy after data preprocessing and evaluation with confusion matrix and classification report.",
+      tech: ["Python", "Scikit-learn", "Pandas", "Seaborn", "Matplotlib", "Google Colab"],
+      github: "https://github.com/Bairavi-Sampath/Mushroom-Classification_model",
+      live: "#",
       gradient: "from-primary/20 to-secondary/20",
     },
     {
-      title: "Swiggy Frontend Clone",
+      title: "Portfolio Website",
       description:
-        "Frontend replica of the Swiggy food delivery app using HTML and CSS. Focused on responsiveness and clean UI design.",
+        "Designed a responsive portfolio website implementing web development, including a contact form with emailing capabilities. Built with modern tech stack for optimal performance and user experience.",
+      tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "EmailJS"],
+      github: "https://github.com/Bairavi-Sampath/PortfolioVerse",
+      live: "#",
+      gradient: "from-secondary/20 to-primary/20",
+    },
+    {
+      title: "Smart Tourists Safety Monitoring System",
+      description:
+        "Developed an AI-enabled real-time safety solution for tourists incorporating Aadhaar KYC, SOS alerts, Danger Zones, and Real-Time Disaster Alerts using geofencing and AI.",
+      tech: ["React", "Leaflet", "OpenStreetMap", "FastAPI", "PostgreSQL", "Gemini API", "Twilio"],
+      github: "#",
+      live: "#",
+      gradient: "from-primary/20 to-secondary/20",
+    },
+    {
+      title: "ICU Video Conference System",
+      description:
+        "Built an ICU healthcare platform connecting nurses, patients and families through scheduled video calls, real-time patient monitoring and clinical documentation for remote critical care.",
+      tech: ["React", "Next.js", "Talky.io", "Neon PostgreSQL"],
+      github: "#",
+      live: "#",
+      gradient: "from-secondary/20 to-primary/20",
+    },
+    {
+      title: "Netflix-Inspired Webpage",
+      description:
+        "Built a responsive Netflix-inspired website during internship, showcasing modern UI design with smooth navigation and engaging visual layout. Demonstrates proficiency in front-end development fundamentals.",
       tech: ["HTML", "CSS"],
-      github: "https://github.com",
-      gradient: "from-secondary/20 to-primary/20",
-    },
-    {
-      title: "Driver Fatigue Detection",
-      description:
-        "Deep learning system for detecting driver drowsiness in autonomous vehicles using computer vision and CNN models.",
-      tech: ["Python", "OpenCV", "TensorFlow"],
-      github: "#",
+      github: "https://github.com/Bairavi-Sampath/Netflix-inspired-Webpage",
+      live: "https://netflix-inspired-webpage.vercel.app/",
       gradient: "from-primary/20 to-secondary/20",
-    },
-    {
-      title: "AI Voice Cloning & Dubbing",
-      description:
-        "Prototype system that converts speech to another language with AI-based voice cloning for natural-sounding dubbing.",
-      tech: ["Python", "TensorFlow", "PyTorch"],
-      github: "#",
-      gradient: "from-secondary/20 to-primary/20",
     },
   ];
 
@@ -87,9 +100,9 @@ const ProjectsSection = () => {
                     className="border-secondary/50 text-secondary hover:bg-secondary/10"
                     asChild
                   >
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink size={16} className="mr-2" />
-                      Learn More
+                      Live Project
                     </a>
                   </Button>
                 </div>

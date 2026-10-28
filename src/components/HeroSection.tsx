@@ -43,7 +43,7 @@ const HeroSection = () => {
         <div className="h-16 md:h-12 mb-8">
           <p className="text-xl md:text-2xl text-secondary font-light">
             {displayText}
-            <span className="animate-pulse"> | Python</span>
+            <span className="animate-pulse"> | Python</span>
           </p>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
