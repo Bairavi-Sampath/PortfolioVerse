@@ -53,10 +53,10 @@ const ProjectsSection = () => {
       badgeIcon: Sparkles,
       description:
         "Designed a responsive, modern portfolio website implementing full web development best practices, dark/light theme switching, and a dynamic interactive contact form with emailing capabilities.",
-      tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "EmailJS"],
+      tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "Web3Forms"],
       github: "https://github.com/Bairavi-Sampath/PortfolioVerse",
       live: "#home",
-      highlight: "Dark / Light Mode & EmailJS",
+      highlight: "Dark / Light Mode & Web3Forms",
     },
     {
       title: "Netflix-Inspired Webpage",
