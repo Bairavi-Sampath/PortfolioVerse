@@ -1,6 +1,6 @@
 export const PORTFOLIO_CONFIG = {
   // Replace with your photograph path (e.g., '/assets/profile.jpg') when ready.
-  profileImageUrl: '',
+  profileImageUrl: '/assets/bairavi_portrait.jpg',
   // Update this path whenever you upload a newer resume PDF to /public/assets/.
   resumePdfPath: '/assets/aistudio/bairavi_resume_SE_62425100.pdf',
   resumeDownloadFilename: 'Bairavi_S_Resume.pdf',

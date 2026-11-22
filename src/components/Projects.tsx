@@ -1,13 +1,71 @@
-import { ArrowUpRight, Github } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  ArrowRight,
+  Award,
+  BarChart3,
+  Bell,
+  BookOpen,
+  BrainCircuit,
+  CheckCircle2,
+  Cpu,
+  Database,
+  ExternalLink,
+  FileText,
+  Github,
+  Layers,
+  Settings,
+  Shield,
+  Sparkles,
+  Video,
+  Wrench,
+} from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { PROJECTS, type ProjectCategory, type ProjectItem } from '../data/portfolioData';
 import { ProjectDiagram } from './ProjectDiagram';
 import { ProjectModal } from './ProjectModal';
 
-type FilterOption = 'All' | ProjectCategory;
+type FilterOption = 'All' | ProjectCategory | 'IoT' | 'UI/UX';
 
-const FILTER_OPTIONS: FilterOption[] = ['All', 'AI/ML', 'Full Stack', 'Research'];
+const FILTER_OPTIONS: FilterOption[] = ['All', 'AI/ML', 'Full Stack', 'Research', 'UI/UX'];
+
+function HighlightIcon({ name, className = 'h-3.5 w-3.5' }: { name: string; className?: string }) {
+  switch (name) {
+    case 'Shield':
+      return <Shield className={className} aria-hidden="true" />;
+    case 'Bell':
+      return <Bell className={className} aria-hidden="true" />;
+    case 'Sparkles':
+      return <Sparkles className={className} aria-hidden="true" />;
+    case 'Video':
+      return <Video className={className} aria-hidden="true" />;
+    case 'Database':
+      return <Database className={className} aria-hidden="true" />;
+    case 'FileText':
+      return <FileText className={className} aria-hidden="true" />;
+    case 'BrainCircuit':
+      return <BrainCircuit className={className} aria-hidden="true" />;
+    case 'Layers':
+      return <Layers className={className} aria-hidden="true" />;
+    case 'BookOpen':
+      return <BookOpen className={className} aria-hidden="true" />;
+    case 'Cpu':
+      return <Cpu className={className} aria-hidden="true" />;
+    case 'Activity':
+      return <Activity className={className} aria-hidden="true" />;
+    case 'Wrench':
+      return <Wrench className={className} aria-hidden="true" />;
+    case 'Award':
+      return <Award className={className} aria-hidden="true" />;
+    case 'AlertCircle':
+      return <AlertCircle className={className} aria-hidden="true" />;
+    case 'BarChart3':
+      return <BarChart3 className={className} aria-hidden="true" />;
+    default:
+      return <CheckCircle2 className={className} aria-hidden="true" />;
+  }
+}
 
 export function Projects() {
   const [selectedFilter, setSelectedFilter] = useState<FilterOption>('All');
@@ -16,11 +74,14 @@ export function Projects() {
   const filteredProjects =
     selectedFilter === 'All'
       ? PROJECTS
-      : PROJECTS.filter((project) => project.categories.includes(selectedFilter));
+      : PROJECTS.filter((project) =>
+          project.categories.includes(selectedFilter as ProjectCategory)
+        );
 
   return (
-    <section id="projects" className="border-b border-zinc-900 bg-[#0B0B0E] py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="border-b border-zinc-900 bg-[#070709] py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,18 +90,18 @@ export function Projects() {
           className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-wider text-yellow-400">
-              Featured Projects
+            <p className="font-mono text-xs uppercase tracking-wider text-amber-400">
+              PROJECTS
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Intelligent systems &amp; full-stack engineering
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              My Projects
             </h2>
-            <p className="mt-3 text-base text-zinc-400">
-              Selected AI/ML, IoT telemetry, NLP formatting, and healthcare full-stack builds.
+            <p className="mt-3 text-base text-zinc-400 sm:text-lg">
+              Innovative solutions, creative ideas and real-world applications.
             </p>
           </div>
 
-          {/* Interactive Filter Controls */}
+          {/* Filter Controls */}
           <div
             className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-zinc-800 bg-[#111114] p-1 sm:rounded-full"
             role="group"
@@ -54,9 +115,9 @@ export function Projects() {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedFilter(option)}
-                  className={`min-h-[40px] rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap shrink-0 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 ${
+                  className={`min-h-[36px] rounded-full px-3.5 py-1.5 text-xs font-bold whitespace-nowrap shrink-0 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${
                     isSelected
-                      ? 'bg-yellow-400 text-zinc-950 shadow-[0_0_16px_rgba(250,204,21,0.25)]'
+                      ? 'bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 text-zinc-950 shadow-[0_0_16px_rgba(245,158,11,0.3)]'
                       : 'text-zinc-300 hover:bg-zinc-800/70 hover:text-white'
                   }`}
                 >
@@ -67,111 +128,152 @@ export function Projects() {
           </div>
         </motion.div>
 
-        {/* Medium-sized Cards in 2-column layout on desktop, 1-column on mobile */}
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+        {/* Compact Project Cards */}
+        <div className="mt-10 space-y-4 sm:space-y-5">
           {filteredProjects.map((project, idx) => {
-            const hasGithubUrl = Boolean(project.githubUrl.trim());
+            const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
+            const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
 
             return (
-              <motion.div
+              <motion.article
                 key={project.id}
-                initial={{ opacity: 0, y: 22 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                role="button"
-                tabIndex={0}
-                onClick={() => setActiveProject(project)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setActiveProject(project);
-                  }
-                }}
-                className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-zinc-800/90 bg-[#111114] shadow-lg transition-all duration-200 hover:-translate-y-1 hover:border-yellow-400/70 hover:shadow-[0_8px_30px_rgba(250,204,21,0.12)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                transition={{ duration: 0.42, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative overflow-hidden rounded-2xl border border-amber-500/30 bg-[#0B0B0E]/95 shadow-[0_0_20px_rgba(245,158,11,0.08)] transition-all duration-300 hover:border-amber-400/60 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)]"
               >
-                {/* Visual Project Header / Diagram Image */}
-                <div className="relative border-b border-zinc-800/80">
-                  <ProjectDiagram diagramId={project.diagramId} compact={true} />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#111114] via-transparent to-transparent opacity-80" />
-
-                  {/* Category Pill Tag */}
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                    {project.categories.map((cat) => (
-                      <span
-                        key={cat}
-                        className="rounded-full border border-yellow-400/40 bg-[#050507]/85 px-2.5 py-0.5 font-mono text-[11px] font-medium text-yellow-400 backdrop-blur-sm"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
-
-                  {project.featuredPriority && (
-                    <span className="absolute top-3 right-3 rounded-full border border-zinc-700/80 bg-[#0A0A0D]/90 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-zinc-300 backdrop-blur-sm">
-                      Featured
-                    </span>
-                  )}
-                </div>
-
-                {/* Card Content */}
-                <div className="flex flex-1 flex-col justify-between p-6">
-                  <div>
-                    <h3 className="font-display text-xl font-bold tracking-tight text-white transition-colors duration-150 group-hover:text-yellow-400">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-zinc-300">
-                      {project.description}
-                    </p>
-
-                    {/* Technology Tags */}
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {project.technologies.slice(0, 5).map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-md border border-zinc-800 bg-[#0A0A0D] px-2 py-0.5 font-mono text-[11px] text-zinc-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 5 && (
-                        <span className="rounded-md border border-zinc-800/60 bg-[#0A0A0D]/60 px-2 py-0.5 font-mono text-[11px] text-zinc-300">
-                          +{project.technologies.length - 5}
-                        </span>
+                {/* Inner layout: image left, content right */}
+                <div className="flex flex-col sm:flex-row sm:items-stretch">
+                  {/* Visual Panel — real image when available, SVG diagram as fallback */}
+                  <div className="relative w-full overflow-hidden border-b border-amber-500/20 sm:w-[220px] sm:shrink-0 sm:border-b-0 sm:border-r md:w-[260px]">
+                    <div className="h-[160px] sm:h-full">
+                      {project.imageUrl ? (
+                        <img
+                          src={project.imageUrl}
+                          alt={`${project.title} preview`}
+                          className="h-full w-full object-cover object-center"
+                          loading="lazy"
+                          draggable={false}
+                        />
+                      ) : (
+                        <ProjectDiagram
+                          diagramId={project.diagramId}
+                          compact={true}
+                          className="h-full w-full"
+                        />
                       )}
                     </div>
                   </div>
 
-                  {/* Card Footer Actions */}
-                  <div className="mt-6 flex items-center justify-between border-t border-zinc-800/80 pt-4">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-400 transition-transform group-hover:translate-x-0.5">
-                      View Details
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </span>
+                  {/* Content Panel */}
+                  <div className="flex flex-1 flex-col justify-between gap-3 p-4 sm:p-5">
+                    {/* Top: badge + title + description */}
+                    <div>
+                      {/* Category Badge */}
+                      <div className="inline-flex items-center gap-1 rounded-full border border-amber-500/35 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-amber-400">
+                        <Settings className="h-2.5 w-2.5 text-amber-400" aria-hidden="true" />
+                        <span>{project.categoryDisplay || project.categories.join(' / ')}</span>
+                      </div>
 
-                    {hasGithubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={(e) => e.stopPropagation()}
-                        aria-label={`View ${project.title} source code on GitHub`}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700/80 bg-[#050507] text-zinc-300 transition-colors hover:border-yellow-400/80 hover:text-yellow-400 focus-visible:outline-2 focus-visible:outline-yellow-400"
+                      {/* Title */}
+                      <h3 className="mt-2 text-sm font-bold leading-snug tracking-tight text-white sm:text-base md:text-[1rem] line-clamp-2">
+                        {project.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="mt-1.5 text-xs leading-relaxed text-zinc-400 line-clamp-2 sm:text-[13px]">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Middle: Highlights + Tech tags */}
+                    <div className="space-y-2.5">
+                      {/* Feature Highlights */}
+                      {project.featuredHighlights && project.featuredHighlights.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+                          {project.featuredHighlights.slice(0, 3).map((highlight, hIdx) => (
+                            <div
+                              key={hIdx}
+                              className="flex items-center gap-1.5 text-[11px] font-medium text-zinc-300"
+                            >
+                              <HighlightIcon
+                                name={highlight.icon}
+                                className="h-3 w-3 text-amber-400 shrink-0"
+                              />
+                              <span>{highlight.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Tech Tags */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.slice(0, 6).map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-md border border-zinc-800 bg-[#131317] px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-400"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 6 && (
+                          <span className="rounded-md border border-zinc-800 bg-[#131317] px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-500">
+                            +{project.technologies.length - 6} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Bottom: Action Buttons */}
+                    <div className="flex flex-wrap items-center gap-2">
+                      {/* View Details */}
+                      <button
+                        type="button"
+                        onClick={() => setActiveProject(project)}
+                        className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 px-4 py-1.5 text-xs font-bold text-zinc-950 shadow-[0_0_14px_rgba(245,158,11,0.28)] transition-all duration-150 hover:brightness-110 hover:shadow-[0_0_22px_rgba(245,158,11,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
                       >
-                        <Github className="h-4 w-4" aria-hidden="true" />
-                      </motion.a>
-                    )}
+                        <span>View Details</span>
+                        <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                      </button>
+
+                      {/* GitHub */}
+                      {hasGithubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${project.title} source code on GitHub`}
+                          className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-zinc-700 bg-transparent px-4 py-1.5 text-xs font-semibold text-white transition-all duration-150 hover:border-amber-400 hover:text-amber-300 hover:bg-amber-400/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+                        >
+                          <Github className="h-3 w-3" aria-hidden="true" />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+
+                      {/* Live Demo */}
+                      {hasLiveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${project.title} live deployment`}
+                          className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900/60 px-3.5 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-600 hover:text-white"
+                        >
+                          <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                          <span>Demo</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             );
           })}
         </div>
       </div>
 
+      {/* Reusable Project Details Modal */}
       <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
     </section>
   );

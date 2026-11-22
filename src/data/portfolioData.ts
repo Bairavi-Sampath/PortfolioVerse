@@ -13,6 +13,7 @@ export interface ProjectItem {
   title: string;
   shortTitle: string;
   categories: ProjectCategory[];
+  categoryDisplay?: string;
   featuredPriority: boolean;
   description: string;
   problemAddressed: string;
@@ -23,6 +24,8 @@ export interface ProjectItem {
   hardware?: string[];
   githubUrl: string;
   liveUrl?: string;
+  featuredHighlights?: { icon: string; label: string }[];
+  imageUrl?: string;
 }
 
 export interface SkillCategory {
@@ -171,9 +174,15 @@ export const PROJECTS: ProjectItem[] = [
     title: 'Smart Tourists Safety Monitoring and Incident Response System Using Geofencing and AI',
     shortTitle: 'Smart Tourists Safety & Geofencing AI',
     categories: ['AI/ML', 'Full Stack'],
+    categoryDisplay: 'AI / FULL STACK / SMART SAFETY',
     featuredPriority: true,
     description:
-      'An intelligent tourist safety monitoring platform designed to identify danger zones, monitor tourist locations and support emergency response.',
+      'A smart tourist safety monitoring and incident response system combining geofencing, real-time alerts, identity verification, and AI-powered assistance.',
+    featuredHighlights: [
+      { icon: 'Shield', label: 'Geofenced Safety Zones' },
+      { icon: 'Bell', label: 'Instant SOS Alerts' },
+      { icon: 'Sparkles', label: 'Gemini & Weather Risk AI' },
+    ],
     objectives: [
       'Provide real-time danger zone identification and proactive tourist alerts using geospatial intelligence.',
       'Deliver immediate emergency escalation with verified KYC and automated SOS alert dispatches.',
@@ -209,6 +218,46 @@ export const PROJECTS: ProjectItem[] = [
       'OpenWeather API',
     ],
     githubUrl: 'https://github.com/Shridhanya-Gomathinayagam/SIH-Tourist',
+    imageUrl: '/assets/aistudio/projects_image_demo/Smart Tourist.png',
+  },
+  {
+    id: 'icu-video-conference',
+    diagramId: 'icu-video',
+    title: 'ICU Video Conference System',
+    shortTitle: 'Healthcare Tele-Visits & Patient Monitoring',
+    categories: ['Full Stack'],
+    categoryDisplay: 'HEALTHCARE / FULL STACK',
+    featuredPriority: true,
+    description:
+      'A healthcare platform designed to support scheduled video communication between nurses, patients and families, along with patient monitoring and clinical documentation.',
+    featuredHighlights: [
+      { icon: 'Video', label: 'Scheduled Virtual Care' },
+      { icon: 'Database', label: 'Neon PostgreSQL Sync' },
+      { icon: 'FileText', label: 'Clinical Documentation' },
+    ],
+    objectives: [
+      'Overcome critical-care physical isolation with reliable, scheduled virtual visits.',
+      'Provide medical staff with structured logging for clinical observations alongside virtual calls.',
+      'Ensure intuitive, accessible video access for patients and families across varied devices.',
+    ],
+    keyFeatures: [
+      'Direct, browser-based scheduled video communication powered by Talky.io integration.',
+      'Secure patient profiles and visit scheduling managed through Neon PostgreSQL.',
+      'Real-time nurse logging dashboard for monitoring and clinical note-taking.',
+      'Clean, accessible user interface optimized for healthcare workflows with React and Next.js.',
+    ],
+    problemAddressed:
+      'Strict critical-care visitation protocols create communication barriers between ICU patients, families, and clinical staff while requiring accurate documentation.',
+    contributions: [
+      'Developed a Next.js and React healthcare platform.',
+      'Implemented scheduled video communication.',
+      'Included real-time patient monitoring and clinical documentation.',
+      'Used Neon PostgreSQL for record storage.',
+      'Integrated Talky.io video functionality.',
+    ],
+    technologies: ['React', 'Next.js', 'Talky.io', 'Neon PostgreSQL'],
+    githubUrl: 'https://github.com/Bairavi-Sampath/ICU_Virtual_visit',
+    imageUrl: '/assets/aistudio/projects_image_demo/ICU_Video_Conference.png',
   },
   {
     id: 'formiva',
@@ -216,9 +265,15 @@ export const PROJECTS: ProjectItem[] = [
     title: 'Formiva – Intelligent ML-Based Offline Document Formatting System',
     shortTitle: 'Formiva Offline ML Formatter',
     categories: ['AI/ML', 'Full Stack'],
+    categoryDisplay: 'AI / MACHINE LEARNING / FULL STACK',
     featuredPriority: true,
     description:
-      'An offline intelligent document formatting system that analyzes document structure and generates publication-ready DOCX files.',
+      'An offline document formatting system that analyzes document structure and generates formatted DOCX files across different academic and book styles.',
+    featuredHighlights: [
+      { icon: 'BrainCircuit', label: 'Offline TF-IDF Analysis' },
+      { icon: 'Layers', label: 'Automated DOCX Synthesis' },
+      { icon: 'BookOpen', label: 'Multi-Style Layouts' },
+    ],
     objectives: [
       'Enable completely offline structural analysis and formatting of raw academic text without external cloud dependency.',
       'Automate adherence to academic guidelines and book typography standards with high consistency.',
@@ -240,6 +295,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     technologies: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'TF-IDF', 'python-docx'],
     githubUrl: 'https://github.com/orgs/Intelligent-Document-Formatting/repositories',
+    imageUrl: '/assets/aistudio/projects_image_demo/Formiva.png',
   },
   {
     id: 'elevator-afdir',
@@ -247,9 +303,15 @@ export const PROJECTS: ProjectItem[] = [
     title: 'AI-Based Elevator Fault Detection & Root Cause Analysis (A-FDIR) Assistant',
     shortTitle: 'Elevator Fault Detection (A-FDIR)',
     categories: ['AI/ML', 'Full Stack', 'Research'],
+    categoryDisplay: 'IoT / AI & ML / EMBEDDED SYSTEMS',
     featuredPriority: true,
     description:
-      'An intelligent elevator monitoring system that detects abnormal sensor patterns, classifies possible faults and presents maintenance insights.',
+      'An intelligent elevator monitoring system that detects anomalies, classifies faults, and provides probable root causes and maintenance recommendations.',
+    featuredHighlights: [
+      { icon: 'Cpu', label: 'ESP32 Multi-Sensor IoT' },
+      { icon: 'Activity', label: 'Isolation & Random Forest ML' },
+      { icon: 'Wrench', label: 'Predictive Maintenance RCA' },
+    ],
     objectives: [
       'Transition elevator upkeep from reactive breakdown fixing to proactive predictive maintenance.',
       'Achieve early detection of mechanical wear, electrical irregularity, and speed abnormalities.',
@@ -285,6 +347,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     hardware: ['DS18B20', 'INA219', 'SW-420', 'TCRT5000'],
     githubUrl: 'https://github.com/orgs/ElevatorAIAssist/repositories',
+    imageUrl: '/assets/aistudio/projects_image_demo/Elevator_AFDIR.png',
   },
   {
     id: 'mushroom-classification',
@@ -292,9 +355,15 @@ export const PROJECTS: ProjectItem[] = [
     title: 'Mushroom Classification Model',
     shortTitle: 'Mushroom Classification Model',
     categories: ['AI/ML'],
+    categoryDisplay: 'AI / MACHINE LEARNING',
     featuredPriority: false,
     description:
-      'A machine learning classification model that predicts whether mushrooms are edible or poisonous.',
+      'A machine learning classification model utilizing Random Forest ensemble trees to predict whether mushroom species are edible or poisonous with high recall.',
+    featuredHighlights: [
+      { icon: 'Award', label: '~95% Ensemble Accuracy' },
+      { icon: 'AlertCircle', label: 'Zero Lethal False-Negatives' },
+      { icon: 'BarChart3', label: 'Confusion Matrix & ROC Eval' },
+    ],
     objectives: [
       'Accurately classify mushroom specimens into edible or toxic categories based on visual and categorical traits.',
       'Achieve high recall on toxic classes to minimize lethal false-negative predictions.',
@@ -315,38 +384,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     technologies: ['Python', 'Scikit-learn', 'Pandas', 'Seaborn', 'Matplotlib', 'Google Colab'],
     githubUrl: 'https://github.com/Bairavi-Sampath/Mushroom-Classification_model',
-  },
-  {
-    id: 'icu-video-conference',
-    diagramId: 'icu-video',
-    title: 'ICU Video Conference System',
-    shortTitle: 'ICU Video Conference System',
-    categories: ['Full Stack'],
-    featuredPriority: false,
-    description:
-      'A healthcare communication platform designed to support scheduled video calls between nurses, patients and their families.',
-    objectives: [
-      'Overcome critical-care physical isolation with reliable, scheduled virtual visits.',
-      'Provide medical staff with structured logging for clinical observations alongside virtual calls.',
-      'Ensure intuitive, accessible video access for patients and families across varied devices.',
-    ],
-    keyFeatures: [
-      'Direct, browser-based scheduled video communication powered by Talky.io integration.',
-      'Secure patient profiles and visit scheduling managed through Neon PostgreSQL.',
-      'Real-time nurse logging dashboard for monitoring and clinical note-taking.',
-      'Clean, accessible user interface optimized for healthcare workflows with React and Next.js.',
-    ],
-    problemAddressed:
-      'Strict critical-care visitation protocols create communication barriers between ICU patients, families, and clinical staff while requiring accurate documentation.',
-    contributions: [
-      'Developed a Next.js and React healthcare platform.',
-      'Implemented scheduled video communication.',
-      'Included real-time patient monitoring and clinical documentation.',
-      'Used Neon PostgreSQL for record storage.',
-      'Integrated Talky.io video functionality.',
-    ],
-    technologies: ['React', 'Next.js', 'Talky.io', 'Neon PostgreSQL'],
-    githubUrl: 'https://github.com/Bairavi-Sampath/ICU_Virtual_visit',
+    imageUrl: '/assets/aistudio/projects_image_demo/Mushroom_Classification.png',
   },
 ];
 

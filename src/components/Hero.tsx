@@ -1,4 +1,4 @@
-import { ArrowRight, Award, Code2, Eye, Github, Linkedin, Mail, Terminal, User } from 'lucide-react';
+import { ArrowRight, Award, Code2, Eye, Github, Linkedin, Mail, Terminal } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { PORTFOLIO_CONFIG } from '../config/portfolioConfig';
@@ -64,19 +64,19 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Left Typographic Column */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7"
+            className="lg:col-span-6 xl:col-span-7"
           >
             <p className="text-base font-medium text-zinc-200 sm:text-lg">
               Hello, I&apos;m <span className="font-semibold text-yellow-400">BAIRAVI S</span>
             </p>
 
-            <h1 className="mt-4 font-display text-4xl font-bold uppercase leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-4 font-display text-4xl font-bold uppercase leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem]">
               AI/ML ENGINEER &amp;
               <span className="mt-1 block text-yellow-400">FULL STACK DEVELOPER</span>
             </h1>
@@ -194,12 +194,12 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Luminous Gold Ring Portrait Area with Subtle Gentle Float */}
+          {/* Right Portrait Area with Subtle Gentle Float */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex items-center justify-center lg:col-span-5"
+            className="relative flex items-center justify-center lg:col-span-6 xl:col-span-5"
           >
             <motion.div
               animate={{
@@ -210,55 +210,16 @@ export function Hero() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="relative flex h-[296px] w-[296px] items-center justify-center sm:h-[400px] sm:w-[400px]"
+              className="relative flex aspect-square w-full max-w-[320px] items-center justify-center sm:max-w-[400px] lg:max-w-[480px] xl:max-w-[520px]"
             >
-              {/* Warm golden aura & crisp luminous ring with soft breathing pulse */}
-              <motion.div
-                aria-hidden="true"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0.12, 0.22, 0.12],
-                }}
-                transition={{
-                  duration: 4.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="absolute inset-4 rounded-full bg-yellow-400/15 blur-2xl"
+              <img
+                src={profileImageUrl || '/assets/bairavi_portrait.jpg'}
+                alt="Portrait of Bairavi S"
+                decoding="async"
+                fetchPriority="high"
+                referrerPolicy="no-referrer"
+                className="h-full w-full object-contain"
               />
-              <div
-                aria-hidden="true"
-                className="absolute inset-3 rounded-full border-2 border-yellow-400/85 shadow-[0_0_45px_rgba(250,204,21,0.32)]"
-              />
-
-              {/* Circular Portrait Frame */}
-              <div className="relative flex h-[248px] w-[248px] flex-col items-center justify-center overflow-hidden rounded-full border border-zinc-800 bg-[#0D0D10] p-5 text-center sm:h-[340px] sm:w-[340px] sm:p-6">
-                {profileImageUrl ? (
-                  <img
-                    src={profileImageUrl}
-                    alt="Portrait of Bairavi S"
-                    decoding="async"
-                    fetchPriority="high"
-                    referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <>
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full border border-yellow-400/50 bg-[#141418] sm:h-24 sm:w-24">
-                      <User className="h-9 w-9 text-yellow-400 sm:h-11 sm:w-11" aria-hidden="true" />
-                    </div>
-                    <p className="mt-3.5 font-display text-base font-bold tracking-tight text-white sm:mt-4 sm:text-lg">
-                      BAIRAVI S
-                    </p>
-                    <p className="mt-1 text-xs font-medium text-yellow-400">
-                      B.E. CSE (AI &amp; ML)
-                    </p>
-                    <p className="mt-1.5 max-w-[190px] text-xs leading-relaxed text-zinc-400">
-                      KPR Institute of Engineering and Technology
-                    </p>
-                  </>
-                )}
-              </div>
             </motion.div>
           </motion.div>
         </div>
