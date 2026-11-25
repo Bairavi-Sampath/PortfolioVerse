@@ -47,10 +47,15 @@ export function CertificateModal({ certificate, onClose }: CertificateModalProps
         {/* Header */}
         <div className="flex items-start justify-between gap-4 border-b border-zinc-800/80 px-6 py-5 sm:px-8">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-full border border-yellow-400/40 bg-[#0A0A0D] px-2.5 py-0.5 font-mono text-[11px] font-medium text-yellow-400">
                 {certificate.issuer}
               </span>
+              {certificate.category && (
+                <span className="rounded-full border border-zinc-700 bg-zinc-800/60 px-2.5 py-0.5 font-mono text-[11px] text-zinc-300">
+                  {certificate.category}
+                </span>
+              )}
               {certificate.score && (
                 <span className="rounded-full border border-yellow-400/80 bg-yellow-400/10 px-2.5 py-0.5 font-mono text-[11px] font-bold text-yellow-300">
                   Score: {certificate.score}

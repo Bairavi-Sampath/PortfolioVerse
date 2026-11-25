@@ -26,9 +26,9 @@ import { PROJECTS, type ProjectCategory, type ProjectItem } from '../data/portfo
 import { ProjectDiagram } from './ProjectDiagram';
 import { ProjectModal } from './ProjectModal';
 
-type FilterOption = 'All' | ProjectCategory | 'IoT' | 'UI/UX';
+type FilterOption = 'All' | ProjectCategory;
 
-const FILTER_OPTIONS: FilterOption[] = ['All', 'AI/ML', 'Full Stack', 'Research', 'UI/UX'];
+const FILTER_OPTIONS: FilterOption[] = ['All', 'AI/ML', 'Full Stack'];
 
 function HighlightIcon({ name, className = 'h-3.5 w-3.5' }: { name: string; className?: string }) {
   switch (name) {
@@ -65,6 +65,42 @@ function HighlightIcon({ name, className = 'h-3.5 w-3.5' }: { name: string; clas
     default:
       return <CheckCircle2 className={className} aria-hidden="true" />;
   }
+}
+
+function ProjectThumbnail({
+  imageUrl,
+  title,
+  diagramId,
+}: {
+  imageUrl?: string;
+  title: string;
+  diagramId: ProjectItem['diagramId'];
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  if (imageUrl && !hasError) {
+    return (
+      <div className="relative h-full w-full overflow-hidden bg-[#07070A]">
+        <img
+          src={imageUrl}
+          alt={`${title} preview`}
+          className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+          loading="lazy"
+          draggable={false}
+          onError={() => setHasError(true)}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      </div>
+    );
+  }
+
+  return (
+    <ProjectDiagram
+      diagramId={diagramId}
+      compact={true}
+      className="h-full w-full"
+    />
+  );
 }
 
 export function Projects() {
@@ -145,24 +181,14 @@ export function Projects() {
               >
                 {/* Inner layout: image left, content right */}
                 <div className="flex flex-col sm:flex-row sm:items-stretch">
-                  {/* Visual Panel — real image when available, SVG diagram as fallback */}
-                  <div className="relative w-full overflow-hidden border-b border-amber-500/20 sm:w-[220px] sm:shrink-0 sm:border-b-0 sm:border-r md:w-[260px]">
-                    <div className="h-[160px] sm:h-full">
-                      {project.imageUrl ? (
-                        <img
-                          src={project.imageUrl}
-                          alt={`${project.title} preview`}
-                          className="h-full w-full object-cover object-center"
-                          loading="lazy"
-                          draggable={false}
-                        />
-                      ) : (
-                        <ProjectDiagram
-                          diagramId={project.diagramId}
-                          compact={true}
-                          className="h-full w-full"
-                        />
-                      )}
+                  {/* Visual Panel — real image with smooth hover transition, fallback to diagram */}
+                  <div className="relative w-full overflow-hidden border-b border-amber-500/20 bg-[#07070A] sm:w-[220px] sm:shrink-0 sm:border-b-0 sm:border-r md:w-[260px]">
+                    <div className="h-[180px] sm:h-full">
+                      <ProjectThumbnail
+                        imageUrl={project.imageUrl}
+                        title={project.title}
+                        diagramId={project.diagramId}
+                      />
                     </div>
                   </div>
 

@@ -1,5 +1,5 @@
 import { CheckCircle2, ExternalLink, Github, Globe, Lightbulb, Target, Wrench, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ProjectItem } from '../data/portfolioData';
 import { ProjectDiagram } from './ProjectDiagram';
 
@@ -10,6 +10,11 @@ interface ProjectModalProps {
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setImageError(false);
+  }, [project]);
 
   useEffect(() => {
     if (!project) return;
@@ -89,8 +94,21 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto px-6 py-6 sm:px-8">
           {/* Project Visual / Image / System Diagram */}
-          <div className="overflow-hidden rounded-xl border border-zinc-800">
-            <ProjectDiagram diagramId={project.diagramId} compact={false} />
+          <div className="group relative overflow-hidden rounded-xl border border-amber-500/30 bg-[#07070A] shadow-[0_0_25px_rgba(245,158,11,0.08)] transition-all duration-300 hover:border-amber-400/50">
+            {project.imageUrl && !imageError ? (
+              <div className="relative aspect-[16/9] w-full max-h-[380px] overflow-hidden bg-[#0A0A0D]">
+                <img
+                  src={project.imageUrl}
+                  alt={`${project.title} showcase`}
+                  className="h-full w-full object-cover object-center transition-transform duration-500 ease-out hover:scale-[1.02]"
+                  loading="eager"
+                  onError={() => setImageError(true)}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B0B0E]/70 via-transparent to-transparent opacity-60" />
+              </div>
+            ) : (
+              <ProjectDiagram diagramId={project.diagramId} compact={false} />
+            )}
           </div>
 
           <div className="mt-7 space-y-6">

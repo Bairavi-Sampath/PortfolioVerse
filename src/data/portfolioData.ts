@@ -1,4 +1,4 @@
-export type ProjectCategory = 'AI/ML' | 'Full Stack' | 'Research';
+export type ProjectCategory = 'AI/ML' | 'Full Stack';
 
 export type ProjectDiagramId =
   | 'tourist-safety'
@@ -38,11 +38,11 @@ export interface SkillCategory {
 export interface EducationItem {
   id: string;
   institution: string;
-  location: string;
+  location?: string;
   degree: string;
-  period: string;
+  period?: string;
   scoreLabel: string;
-  highlights: string[];
+  highlights?: string[];
 }
 
 export interface ExperienceItem {
@@ -54,11 +54,17 @@ export interface ExperienceItem {
   technologies: string[];
 }
 
+export type CertificateCategory =
+  | 'Certifications'
+  | 'Participation Certificates'
+  | 'Research Certificates';
+
 export interface CertificationItem {
   id: string;
   title: string;
   issuer: string;
   periodOrDate: string;
+  category: CertificateCategory;
   topics?: string;
   score?: string;
   imageUrl?: string;
@@ -257,7 +263,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     technologies: ['React', 'Next.js', 'Talky.io', 'Neon PostgreSQL'],
     githubUrl: 'https://github.com/Bairavi-Sampath/ICU_Virtual_visit',
-    imageUrl: '/assets/aistudio/projects_image_demo/ICU_Video_Conference.png',
+    imageUrl: '/assets/aistudio/projects_image_demo/ICU_project.png',
   },
   {
     id: 'formiva',
@@ -302,7 +308,7 @@ export const PROJECTS: ProjectItem[] = [
     diagramId: 'elevator-afdir',
     title: 'AI-Based Elevator Fault Detection & Root Cause Analysis (A-FDIR) Assistant',
     shortTitle: 'Elevator Fault Detection (A-FDIR)',
-    categories: ['AI/ML', 'Full Stack', 'Research'],
+    categories: ['AI/ML'],
     categoryDisplay: 'IoT / AI & ML / EMBEDDED SYSTEMS',
     featuredPriority: true,
     description:
@@ -347,7 +353,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     hardware: ['DS18B20', 'INA219', 'SW-420', 'TCRT5000'],
     githubUrl: 'https://github.com/orgs/ElevatorAIAssist/repositories',
-    imageUrl: '/assets/aistudio/projects_image_demo/Elevator_AFDIR.png',
+    imageUrl: '/assets/aistudio/projects_image_demo/Elevator Predictive Maintenance img.png',
   },
   {
     id: 'mushroom-classification',
@@ -384,7 +390,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     technologies: ['Python', 'Scikit-learn', 'Pandas', 'Seaborn', 'Matplotlib', 'Google Colab'],
     githubUrl: 'https://github.com/Bairavi-Sampath/Mushroom-Classification_model',
-    imageUrl: '/assets/aistudio/projects_image_demo/Mushroom_Classification.png',
+    imageUrl: '/assets/aistudio/projects_image_demo/Mushroom Classification Forest image.png',
   },
 ];
 
@@ -421,6 +427,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Generative AI for Computer Vision',
     issuer: 'NPTEL, IIT Guwahati',
     periodOrDate: 'July – October 2026',
+    category: 'Certifications',
     score: '91% (Elite)',
     topics: 'Generative AI architectures, GANs, diffusion models, and computer vision applications',
     imageUrl: '/assets/aistudio/certificates/NPTEL_generativeAIforCV.jpeg',
@@ -431,6 +438,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Large Language Models (LLMs)',
     issuer: 'NPTEL, IIT Madras',
     periodOrDate: 'January – April 2026',
+    category: 'Certifications',
     score: '61% (Elite)',
     topics: 'Large language model architectures, transformer attention, prompting, and fine-tuning',
     imageUrl: '/assets/aistudio/certificates/NPTEL_LLM.jpg',
@@ -441,9 +449,20 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Responsible and Safe AI',
     issuer: 'NPTEL, IIIT Hyderabad',
     periodOrDate: 'July – October 2025',
+    category: 'Certifications',
     score: '54%',
     topics: 'AI ethics, algorithmic fairness, safety benchmarks, and responsible deployment',
     imageUrl: '/assets/aistudio/certificates/NPTEL_Responsible & Safe AI.jpg',
+    isFeatured: true,
+  },
+  {
+    id: 'cicps-2026-research-paper',
+    title: 'Certificate of Authorship – CICPS 2026',
+    issuer: 'CICPS 2026 (STPI Kolkata / Springer)',
+    periodOrDate: 'January 2 – 3, 2026',
+    category: 'Research Certificates',
+    topics: "Presented research paper on 'Smart Tourist Safety Monitoring and Incident Response system using AI and Geo-Fencing' (Springer LNNS, Scopus-indexed)",
+    imageUrl: '/assets/aistudio/certificates/certificate for research.jpg',
     isFeatured: true,
   },
   {
@@ -451,6 +470,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Advanced C++',
     issuer: 'IIT Bombay Spoken Tutorial',
     periodOrDate: 'May 5, 2025',
+    category: 'Certifications',
     score: '65%',
     topics: 'Advanced C++ object-oriented principles, templates, and STL',
     imageUrl: '/assets/aistudio/certificates/advanced_C++.jpg',
@@ -461,6 +481,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Python 3.4.3',
     issuer: 'IIT Bombay Spoken Tutorial',
     periodOrDate: 'May 5, 2025',
+    category: 'Certifications',
     score: '65%',
     topics: 'Python 3.4.3 programming fundamentals, scripting, and modular architecture',
     imageUrl: '/assets/aistudio/certificates/python_certificate.jpg',
@@ -471,8 +492,79 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'AWS Fundamentals for Cloud Practitioners',
     issuer: 'Nminds Academy',
     periodOrDate: 'August 18 – 19, 2025',
+    category: 'Participation Certificates',
     topics: 'Cloud computing fundamentals, AWS EC2, Route53, Elastic Load Balancer, and webserver deployment',
     imageUrl: '/assets/aistudio/certificates/AWS_OCC.jpg',
+    isFeatured: true,
+  },
+  {
+    id: 'hackace-2026',
+    title: 'International Hackathon – HackACE 2026',
+    issuer: 'KPRIET & Allcollegeevent.com',
+    periodOrDate: 'September 19, 2026',
+    category: 'Participation Certificates',
+    topics: 'Final round participation in International Hackathon demonstrating innovation, creativity, and problem-solving',
+    imageUrl: '/assets/aistudio/certificates/HackACE 2026-Final_round.jpg',
+    isFeatured: true,
+  },
+  {
+    id: 'codienych-hackathon',
+    title: 'CODIENYCH 1.0 – 24-Hour National Hackathon',
+    issuer: 'Erode Sengunthar Engineering College',
+    periodOrDate: 'October 8 – 9, 2026',
+    category: 'Participation Certificates',
+    topics: '24-hour national level hackathon organized by the Department of Information Technology',
+    imageUrl: '/assets/aistudio/certificates/codienych 1.0.jpeg',
+    isFeatured: true,
+  },
+  {
+    id: 'innovsense-2026',
+    title: 'Innovsense 2026 – Project TourEzy',
+    issuer: 'Centre for Innovation, Incubation & Entrepreneurship, KPRIET',
+    periodOrDate: 'April 16 – 17, 2026',
+    category: 'Participation Certificates',
+    topics: 'Certificate of Appreciation for presenting project TourEzy in Innovsense 2026',
+    imageUrl: '/assets/aistudio/certificates/innovsense.jpeg',
+    isFeatured: true,
+  },
+  {
+    id: 'codher-2025',
+    title: "CodHer'25 Hackathon",
+    issuer: 'ACM-CEG, Anna University, Chennai',
+    periodOrDate: '2025',
+    category: 'Participation Certificates',
+    topics: "Participated in CodHer'25 coding hackathon organized by ACM-CEG via Unstop",
+    imageUrl: "/assets/aistudio/certificates/codher'25.jpeg",
+    isFeatured: true,
+  },
+  {
+    id: 'samsung-innovation-campus',
+    title: 'Coding & Programming – Samsung Innovation Campus',
+    issuer: 'Samsung Southwest Asia & ESSCI',
+    periodOrDate: 'February 2 – March 3, 2026',
+    category: 'Participation Certificates',
+    topics: 'Certificate of Completion (SIC23132) for Coding & Programming course by Samsung Innovation Campus',
+    imageUrl: '/assets/aistudio/certificates/samsung_hack.jpeg',
+    isFeatured: true,
+  },
+  {
+    id: 'cryptera-2025',
+    title: 'CRYPTERA 2025 Technical Symposium',
+    issuer: 'Coimbatore Institute of Technology (CIT)',
+    periodOrDate: 'February 21 – 22, 2025',
+    category: 'Participation Certificates',
+    topics: 'Paper presentation during the Technical Symposium CRYPTERA 2025 by Dept of CSE, CIT',
+    imageUrl: "/assets/aistudio/certificates/cryptera'25.jpeg",
+    isFeatured: true,
+  },
+  {
+    id: 'spartanz-2025',
+    title: "SPARTANZ'25 National Level Technical Symposium",
+    issuer: 'Hindusthan Institute of Technology',
+    periodOrDate: 'April 22, 2025',
+    category: 'Participation Certificates',
+    topics: "National Level Technical Symposium paper presentation organized by Dept of CSE and AI & DS",
+    imageUrl: "/assets/aistudio/certificates/spartanz'25.jpeg",
     isFeatured: true,
   },
   {
@@ -480,6 +572,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Python (Basic)',
     issuer: 'HackerRank',
     periodOrDate: 'May 9, 2026',
+    category: 'Certifications',
     topics: 'Data structures, syntax, algorithms, and problem solving in Python',
     imageUrl: '/assets/aistudio/certificates/python_basic certificate.jpg',
     isFeatured: true,
@@ -489,6 +582,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'SQL (Basic)',
     issuer: 'HackerRank',
     periodOrDate: 'May 9, 2026',
+    category: 'Certifications',
     topics: 'Relational querying, aggregation, filtering, and joins',
     imageUrl: '/assets/aistudio/certificates/sql_basic certificate.jpg',
     isFeatured: true,
@@ -498,6 +592,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Java Problem Solving',
     issuer: 'CodeChef',
     periodOrDate: 'August 13, 2026',
+    category: 'Certifications',
     topics: 'Data structures, algorithmic problem solving, and object-oriented programming in Java',
     imageUrl: '/assets/aistudio/certificates/Java Problem Solving Codechef.jpg',
     isFeatured: true,
@@ -507,17 +602,40 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Practice Java',
     issuer: 'CodeChef',
     periodOrDate: 'August 11, 2026',
+    category: 'Certifications',
     topics: 'Java practice problems covering algorithms, data structures, and OOP',
     imageUrl: '/assets/aistudio/certificates/Practice Java Codechef.jpg',
     isFeatured: true,
   },
 
-  // 2. Additional Certifications (Available under "View All Certifications")
+  // 2. Additional Certifications & Badges (Available under "View All Certifications")
+  {
+    id: 'iit-bombay-cpp-training',
+    title: 'C++ Training Completion',
+    issuer: 'IIT Bombay Spoken Tutorial',
+    periodOrDate: 'December 27, 2024',
+    category: 'Participation Certificates',
+    score: '50%',
+    topics: 'Completed Cpp training test organized by Spoken Tutorial Project, IIT Bombay',
+    imageUrl: '/assets/aistudio/certificates/C++_certificate.jpg',
+    isFeatured: false,
+  },
+  {
+    id: 'codechef-streak-badge',
+    title: 'Silver Streak Badge (25 Days)',
+    issuer: 'CodeChef',
+    periodOrDate: '2026',
+    category: 'Participation Certificates',
+    topics: 'Maintained a consistent 25-day daily coding streak on CodeChef',
+    imageUrl: '/assets/aistudio/certificates/CodeChefBadge (1).png',
+    isFeatured: false,
+  },
   {
     id: 'skillrack-sql-basics',
     title: 'SQL Basics',
     issuer: 'SkillRack',
     periodOrDate: 'September 10, 2025',
+    category: 'Certifications',
     topics: 'Relational database concepts, schema definitions, and SQL queries',
     imageUrl: '/assets/aistudio/certificates/SQL-basics certificate.png',
     isFeatured: false,
@@ -527,6 +645,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
     title: 'Learn Java!',
     issuer: 'CodeChef',
     periodOrDate: 'August 3, 2026',
+    category: 'Certifications',
     topics: 'Object-oriented programming, classes, exceptions, and core Java foundations via CodeChef',
     imageUrl: '/assets/aistudio/certificates/Learn_java_codechef.jpg',
     isFeatured: false,
@@ -541,10 +660,6 @@ export const EDUCATION_ITEMS: EducationItem[] = [
     degree: 'B.E. Computer Science and Engineering – Artificial Intelligence and Machine Learning',
     period: '2024 – 2028',
     scoreLabel: 'CGPA: 8.7/10 (Till 4th Semester)',
-    highlights: [
-      'Specializing in Artificial Intelligence, Machine Learning, and Full-Stack Software Systems.',
-      'Applied research resulting in Springer LNNS (Scopus-indexed) acceptance in January 2026.',
-    ],
   },
   {
     id: 'hsc',
@@ -553,8 +668,13 @@ export const EDUCATION_ITEMS: EducationItem[] = [
     degree: 'Higher Secondary Certificate (HSC) – Mathematics with Computer Science',
     period: '2022 – 2024',
     scoreLabel: 'Percentage: 84.2%',
-    highlights: [
-      'Focused on Mathematics and Computer Science fundamentals prior to undergraduate engineering.',
-    ],
+  },
+  {
+    id: 'sslc',
+    institution: 'Government Higher Secondary School',
+    location: 'Vellankovil',
+    degree: 'Secondary School Leaving Certificate (SSLC)',
+    period: '2021 – 2022',
+    scoreLabel: 'SSLC: 91.20%',
   },
 ];
