@@ -13,7 +13,7 @@ import {
   Send,
   Terminal,
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState, type FormEvent } from 'react';
 import { PORTFOLIO_CONFIG } from '../config/portfolioConfig';
 
@@ -128,7 +128,7 @@ export function Contact() {
         setStatus('error');
         setFeedbackMessage(
           data.message ||
-            'Unable to send your message right now. Please email bairavisampath29@gmail.com directly.',
+          'Unable to send your message right now. Please email bairavisampath29@gmail.com directly.',
         );
         return;
       }
@@ -153,7 +153,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-[#050507] py-16 sm:py-20 lg:py-24">
+    <section id="contact" className="bg-[var(--bg-primary)] py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Left Contact Info */}
@@ -164,26 +164,26 @@ export function Contact() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5"
           >
-            <p className="font-mono text-xs uppercase tracking-wider text-yellow-400">Contact</p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <p className="font-mono text-xs uppercase tracking-wider text-amber-600 dark:text-yellow-400">Contact</p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-[var(--text-heading)] sm:text-4xl">
               Let&apos;s Build Something Intelligent Together.
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-zinc-300">
+            <p className="mt-4 text-base leading-relaxed text-[var(--text-secondary)]">
               I&apos;m always interested in exploring AI/ML opportunities, full-stack development
               projects, research collaborations and innovative ideas.
             </p>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-start justify-between gap-3 rounded-xl border border-zinc-800/90 bg-[#111114] p-4">
+              <div className="flex items-start justify-between gap-3 rounded-xl border border-[var(--border-card)] bg-[var(--bg-surface)] p-4 shadow-xs dark:shadow-none">
                 <div className="flex items-start gap-3.5 min-w-0">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-[#050507]">
-                    <Mail className="h-4 w-4 text-yellow-400" aria-hidden="true" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[var(--border-card)] bg-[var(--bg-primary)]">
+                    <Mail className="h-4 w-4 text-amber-600 dark:text-yellow-400" aria-hidden="true" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs uppercase tracking-wider text-zinc-400">Email</p>
+                    <p className="text-xs uppercase tracking-wider text-[var(--text-muted)]">Email</p>
                     <a
                       href={`mailto:${social.email}`}
-                      className="mt-0.5 block truncate text-sm font-medium text-zinc-100 transition-colors hover:text-yellow-400"
+                      className="mt-0.5 block truncate text-sm font-medium text-[var(--text-primary)] transition-colors hover:text-amber-600 dark:hover:text-yellow-400"
                     >
                       {social.email}
                     </a>
@@ -194,11 +194,11 @@ export function Contact() {
                   type="button"
                   onClick={handleCopyEmail}
                   aria-label="Copy email address"
-                  className="inline-flex min-h-[38px] shrink-0 items-center gap-1.5 rounded-lg border border-zinc-800 bg-[#050507] px-3 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:border-yellow-400/60 hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                  className="inline-flex min-h-[38px] shrink-0 items-center gap-1.5 rounded-lg border border-[var(--border-card)] bg-[var(--bg-primary)] px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] transition-colors hover:border-amber-500/60 dark:hover:border-yellow-400/60 hover:text-amber-600 dark:hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                 >
                   {copiedEmail ? (
                     <>
-                      <Check className="h-3.5 w-3.5 text-yellow-400" aria-hidden="true" />
+                      <Check className="h-3.5 w-3.5 text-amber-600 dark:text-yellow-400" aria-hidden="true" />
                       Copied
                     </>
                   ) : (
@@ -210,13 +210,13 @@ export function Contact() {
                 </button>
               </div>
 
-              <div className="flex items-start gap-3.5 rounded-xl border border-zinc-800/90 bg-[#111114] p-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-[#050507]">
-                  <MapPin className="h-4 w-4 text-yellow-400" aria-hidden="true" />
+              <div className="flex items-start gap-3.5 rounded-xl border border-[var(--border-card)] bg-[var(--bg-surface)] p-4 shadow-xs dark:shadow-none">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[var(--border-card)] bg-[var(--bg-primary)]">
+                  <MapPin className="h-4 w-4 text-amber-600 dark:text-yellow-400" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-zinc-400">Location</p>
-                  <p className="mt-0.5 text-sm font-medium text-zinc-100">{social.location}.</p>
+                  <p className="text-xs uppercase tracking-wider text-[var(--text-muted)]">Location</p>
+                  <p className="mt-0.5 text-sm font-medium text-[var(--text-primary)]">{social.location}.</p>
                 </div>
               </div>
             </div>
@@ -224,59 +224,69 @@ export function Contact() {
             {(hasLinkedin || hasGithub || hasLeetcode || hasSkillrack || hasCodechef) && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 {hasLinkedin && (
-                  <a
+                  <motion.a
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     href={social.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-yellow-400/60 bg-[#111114] px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-yellow-300 hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-amber-500/60 dark:border-yellow-400/60 bg-[var(--bg-surface)] px-5 py-2 text-sm font-medium text-[var(--text-secondary)] shadow-xs dark:shadow-none transition-colors hover:border-amber-500 dark:hover:border-yellow-300 hover:text-amber-700 dark:hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                   >
                     <Linkedin className="h-4 w-4" aria-hidden="true" />
                     LinkedIn
-                  </a>
+                  </motion.a>
                 )}
                 {hasGithub && (
-                  <a
+                  <motion.a
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     href={social.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-yellow-400/60 bg-[#111114] px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-yellow-300 hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-amber-500/60 dark:border-yellow-400/60 bg-[var(--bg-surface)] px-5 py-2 text-sm font-medium text-[var(--text-secondary)] shadow-xs dark:shadow-none transition-colors hover:border-amber-500 dark:hover:border-yellow-300 hover:text-amber-700 dark:hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                   >
                     <Github className="h-4 w-4" aria-hidden="true" />
                     GitHub
-                  </a>
+                  </motion.a>
                 )}
                 {hasLeetcode && (
-                  <a
+                  <motion.a
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     href={social.leetcodeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-yellow-400/60 bg-[#111114] px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-yellow-300 hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-amber-500/60 dark:border-yellow-400/60 bg-[var(--bg-surface)] px-5 py-2 text-sm font-medium text-[var(--text-secondary)] shadow-xs dark:shadow-none transition-colors hover:border-amber-500 dark:hover:border-yellow-300 hover:text-amber-700 dark:hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                   >
                     <Code2 className="h-4 w-4" aria-hidden="true" />
                     LeetCode
-                  </a>
+                  </motion.a>
                 )}
                 {hasSkillrack && (
-                  <a
+                  <motion.a
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     href={social.skillrackUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-yellow-400/60 bg-[#111114] px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-yellow-300 hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-amber-500/60 dark:border-yellow-400/60 bg-[var(--bg-surface)] px-5 py-2 text-sm font-medium text-[var(--text-secondary)] shadow-xs dark:shadow-none transition-colors hover:border-amber-500 dark:hover:border-yellow-300 hover:text-amber-700 dark:hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                   >
                     <Award className="h-4 w-4" aria-hidden="true" />
                     SkillRack
-                  </a>
+                  </motion.a>
                 )}
                 {hasCodechef && (
-                  <a
+                  <motion.a
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     href={social.codechefUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-yellow-400/60 bg-[#111114] px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-yellow-300 hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-amber-500/60 dark:border-yellow-400/60 bg-[var(--bg-surface)] px-5 py-2 text-sm font-medium text-[var(--text-secondary)] shadow-xs dark:shadow-none transition-colors hover:border-amber-500 dark:hover:border-yellow-300 hover:text-amber-700 dark:hover:text-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                   >
                     <Terminal className="h-4 w-4" aria-hidden="true" />
                     CodeChef
-                  </a>
+                  </motion.a>
                 )}
               </div>
             )}
@@ -293,12 +303,12 @@ export function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-2xl border border-zinc-800/90 bg-[#111114] p-6 shadow-xl transition-all duration-200 hover:border-zinc-700/80 sm:p-8"
+              className="rounded-2xl border border-[var(--border-card)] bg-[var(--bg-surface)] p-6 shadow-sm dark:shadow-xl transition-all duration-200 hover:border-zinc-300 dark:hover:border-zinc-700/80 sm:p-8"
             >
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-zinc-200">
-                    Name <span className="text-yellow-400">*</span>
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-[var(--text-primary)]">
+                    Name <span className="text-amber-600 dark:text-yellow-400">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -310,10 +320,10 @@ export function Contact() {
                     placeholder="Your name"
                     aria-invalid={Boolean(errors.name)}
                     aria-describedby={errors.name ? 'contact-name-error' : undefined}
-                    className="mt-2 min-h-[44px] w-full rounded-lg border border-zinc-800 bg-[#050507] px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 transition-colors focus:border-yellow-400 focus:outline-none"
+                    className="mt-2 min-h-[44px] w-full rounded-lg border border-[var(--border-card)] bg-[var(--bg-input)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] transition-colors focus:border-amber-500 dark:focus:border-yellow-400 focus:outline-none"
                   />
                   {errors.name && (
-                    <p id="contact-name-error" className="mt-1.5 text-xs text-rose-400">
+                    <p id="contact-name-error" className="mt-1.5 text-xs text-rose-600 dark:text-rose-400">
                       {errors.name}
                     </p>
                   )}
@@ -322,9 +332,9 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="contact-email"
-                    className="block text-sm font-medium text-zinc-200"
+                    className="block text-sm font-medium text-[var(--text-primary)]"
                   >
-                    Email <span className="text-yellow-400">*</span>
+                    Email <span className="text-amber-600 dark:text-yellow-400">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -336,10 +346,10 @@ export function Contact() {
                     placeholder="you@example.com"
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? 'contact-email-error' : undefined}
-                    className="mt-2 min-h-[44px] w-full rounded-lg border border-zinc-800 bg-[#050507] px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 transition-colors focus:border-yellow-400 focus:outline-none"
+                    className="mt-2 min-h-[44px] w-full rounded-lg border border-[var(--border-card)] bg-[var(--bg-input)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] transition-colors focus:border-amber-500 dark:focus:border-yellow-400 focus:outline-none"
                   />
                   {errors.email && (
-                    <p id="contact-email-error" className="mt-1.5 text-xs text-rose-400">
+                    <p id="contact-email-error" className="mt-1.5 text-xs text-rose-600 dark:text-rose-400">
                       {errors.email}
                     </p>
                   )}
@@ -349,9 +359,9 @@ export function Contact() {
               <div className="mt-5">
                 <label
                   htmlFor="contact-subject"
-                  className="block text-sm font-medium text-zinc-200"
+                  className="block text-sm font-medium text-[var(--text-primary)]"
                 >
-                  Subject <span className="text-yellow-400">*</span>
+                  Subject <span className="text-amber-600 dark:text-yellow-400">*</span>
                 </label>
                 <input
                   id="contact-subject"
@@ -363,10 +373,10 @@ export function Contact() {
                   placeholder="AI/ML collaboration, internship inquiry, or project discussion"
                   aria-invalid={Boolean(errors.subject)}
                   aria-describedby={errors.subject ? 'contact-subject-error' : undefined}
-                  className="mt-2 min-h-[44px] w-full rounded-lg border border-zinc-800 bg-[#050507] px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 transition-colors focus:border-yellow-400 focus:outline-none"
+                  className="mt-2 min-h-[44px] w-full rounded-lg border border-[var(--border-card)] bg-[var(--bg-input)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] transition-colors focus:border-amber-500 dark:focus:border-yellow-400 focus:outline-none"
                 />
                 {errors.subject && (
-                  <p id="contact-subject-error" className="mt-1.5 text-xs text-rose-400">
+                  <p id="contact-subject-error" className="mt-1.5 text-xs text-rose-600 dark:text-rose-400">
                     {errors.subject}
                   </p>
                 )}
@@ -375,9 +385,9 @@ export function Contact() {
               <div className="mt-5">
                 <label
                   htmlFor="contact-message"
-                  className="block text-sm font-medium text-zinc-200"
+                  className="block text-sm font-medium text-[var(--text-primary)]"
                 >
-                  Message <span className="text-yellow-400">*</span>
+                  Message <span className="text-amber-600 dark:text-yellow-400">*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -389,44 +399,56 @@ export function Contact() {
                   placeholder="Share details about the opportunity, project scope, or collaboration idea..."
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'contact-message-error' : undefined}
-                  className="mt-2 w-full rounded-lg border border-zinc-800 bg-[#050507] px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 transition-colors focus:border-yellow-400 focus:outline-none"
+                  className="mt-2 w-full rounded-lg border border-[var(--border-card)] bg-[var(--bg-input)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] transition-colors focus:border-amber-500 dark:focus:border-yellow-400 focus:outline-none"
                 />
                 {errors.message && (
-                  <p id="contact-message-error" className="mt-1.5 text-xs text-rose-400">
+                  <p id="contact-message-error" className="mt-1.5 text-xs text-rose-600 dark:text-rose-400">
                     {errors.message}
                   </p>
                 )}
               </div>
 
-              {status === 'success' && (
-                <div
-                  role="status"
-                  className="mt-5 flex items-start gap-2.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-3.5 text-sm text-emerald-200"
-                >
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" aria-hidden="true" />
-                  <span>{feedbackMessage}</span>
-                </div>
-              )}
+              <AnimatePresence mode="wait">
+                {status === 'success' && (
+                  <motion.div
+                    key="contact-success"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.25 }}
+                    role="status"
+                    className="mt-5 flex items-start gap-2.5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-3.5 text-sm text-emerald-800 dark:text-emerald-200"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                    <span>{feedbackMessage}</span>
+                  </motion.div>
+                )}
 
-              {status === 'error' && (
-                <div
-                  role="alert"
-                  className="mt-5 flex items-start gap-2.5 rounded-lg border border-rose-500/40 bg-rose-500/10 p-3.5 text-sm text-rose-200"
-                >
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-400" aria-hidden="true" />
-                  <div>
-                    <p>{feedbackMessage}</p>
-                    <a
-                      href={`mailto:${social.email}?subject=${encodeURIComponent(
-                        values.subject || 'Portfolio Inquiry',
-                      )}&body=${encodeURIComponent(values.message)}`}
-                      className="mt-2 inline-block text-xs font-semibold text-yellow-300 underline underline-offset-4 hover:text-yellow-200"
-                    >
-                      Open in your default email app
-                    </a>
-                  </div>
-                </div>
-              )}
+                {status === 'error' && (
+                  <motion.div
+                    key="contact-error"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.25 }}
+                    role="alert"
+                    className="mt-5 flex items-start gap-2.5 rounded-lg border border-rose-500/40 bg-rose-500/10 p-3.5 text-sm text-rose-800 dark:text-rose-200"
+                  >
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" aria-hidden="true" />
+                    <div>
+                      <p>{feedbackMessage}</p>
+                      <a
+                        href={`mailto:${social.email}?subject=${encodeURIComponent(
+                          values.subject || 'Portfolio Inquiry',
+                        )}&body=${encodeURIComponent(values.message)}`}
+                        className="mt-2 inline-block text-xs font-semibold text-amber-700 dark:text-yellow-300 underline underline-offset-4 hover:text-amber-600 dark:hover:text-yellow-200"
+                      >
+                        Open in your default email app
+                      </a>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <div className="mt-6 flex items-center justify-end">
                 <motion.button
@@ -434,7 +456,7 @@ export function Contact() {
                   whileHover={{ scale: 1.025 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={status === 'loading'}
-                  className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-full bg-yellow-400 px-7 py-2.5 text-sm font-bold text-zinc-950 shadow-[0_0_20px_rgba(250,204,21,0.2)] transition-all duration-150 hover:bg-yellow-300 hover:shadow-[0_0_28px_rgba(250,204,21,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                  className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-full bg-amber-500 dark:bg-yellow-400 px-7 py-2.5 text-sm font-bold text-zinc-950 shadow-[0_6px_20px_rgba(245,158,11,0.22)] dark:shadow-[0_0_20px_rgba(250,204,21,0.2)] transition-all duration-150 hover:bg-amber-400 dark:hover:bg-yellow-300 hover:shadow-[0_8px_28px_rgba(245,158,11,0.35)] dark:hover:shadow-[0_0_28px_rgba(250,204,21,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
                   {status === 'loading' ? (
                     <>

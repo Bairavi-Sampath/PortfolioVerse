@@ -20,7 +20,7 @@ import {
   Video,
   Wrench,
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
 import { PROJECTS, type ProjectCategory, type ProjectItem } from '../data/portfolioData';
 import { ProjectDiagram } from './ProjectDiagram';
@@ -115,7 +115,7 @@ export function Projects() {
         );
 
   return (
-    <section id="projects" className="border-b border-zinc-900 bg-[#070709] py-16 sm:py-20 lg:py-24">
+    <section id="projects" className="border-b border-[var(--border-section)] bg-[var(--bg-tertiary)] py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -126,20 +126,20 @@ export function Projects() {
           className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-wider text-amber-400">
+            <p className="font-mono text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400">
               PROJECTS
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-[var(--text-heading)] sm:text-4xl lg:text-5xl">
               My Projects
             </h2>
-            <p className="mt-3 text-base text-zinc-400 sm:text-lg">
+            <p className="mt-3 text-base text-[var(--text-muted)] sm:text-lg">
               Innovative solutions, creative ideas and real-world applications.
             </p>
           </div>
 
           {/* Filter Controls */}
           <div
-            className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-zinc-800 bg-[#111114] p-1 sm:rounded-full"
+            className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-[var(--border-card)] bg-[var(--bg-surface)] p-1 shadow-xs dark:shadow-none sm:rounded-full"
             role="group"
             aria-label="Filter projects by category"
           >
@@ -151,13 +151,21 @@ export function Projects() {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedFilter(option)}
-                  className={`min-h-[36px] rounded-full px-3.5 py-1.5 text-xs font-bold whitespace-nowrap shrink-0 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${
+                  className={`relative min-h-[36px] rounded-full px-3.5 py-1.5 text-xs font-bold whitespace-nowrap shrink-0 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${
                     isSelected
-                      ? 'bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 text-zinc-950 shadow-[0_0_16px_rgba(245,158,11,0.3)]'
-                      : 'text-zinc-300 hover:bg-zinc-800/70 hover:text-white'
+                      ? 'text-zinc-950'
+                      : 'text-[var(--text-secondary)] hover:bg-[var(--bg-surface-alt)] hover:text-[var(--text-heading)]'
                   }`}
                 >
-                  {option}
+                  {isSelected && (
+                    <motion.span
+                      layoutId="project-filter-pill"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 shadow-[0_0_16px_rgba(245,158,11,0.3)]"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <span className="relative z-10">{option}</span>
                 </button>
               );
             })}
@@ -165,20 +173,24 @@ export function Projects() {
         </motion.div>
 
         {/* Compact Project Cards */}
-        <div className="mt-10 space-y-4 sm:space-y-5">
-          {filteredProjects.map((project, idx) => {
-            const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
-            const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
+        <motion.div layout className="mt-10 space-y-4 sm:space-y-5">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, idx) => {
+              const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
+              const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
 
-            return (
-              <motion.article
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.42, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative overflow-hidden rounded-2xl border border-amber-500/30 bg-[#0B0B0E]/95 shadow-[0_0_20px_rgba(245,158,11,0.08)] transition-all duration-300 hover:border-amber-400/60 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)]"
-              >
+              return (
+                <motion.article
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                  transition={{ duration: 0.38, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  className="group relative overflow-hidden rounded-2xl border border-amber-500/35 dark:border-amber-500/30 bg-[var(--bg-surface)] dark:bg-[#0B0B0E]/95 shadow-[0_4px_20px_rgba(245,158,11,0.08)] dark:shadow-[0_0_20px_rgba(245,158,11,0.08)] transition-all duration-300 hover:border-amber-500/70 dark:hover:border-amber-400/60 hover:shadow-[0_8px_28px_rgba(245,158,11,0.16)] dark:hover:shadow-[0_0_30px_rgba(245,158,11,0.18)]"
+                >
                 {/* Inner layout: image left, content right */}
                 <div className="flex flex-col sm:flex-row sm:items-stretch">
                   {/* Visual Panel — real image with smooth hover transition, fallback to diagram */}
@@ -197,18 +209,18 @@ export function Projects() {
                     {/* Top: badge + title + description */}
                     <div>
                       {/* Category Badge */}
-                      <div className="inline-flex items-center gap-1 rounded-full border border-amber-500/35 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-amber-400">
-                        <Settings className="h-2.5 w-2.5 text-amber-400" aria-hidden="true" />
+                      <div className="inline-flex items-center gap-1 rounded-full border border-amber-500/35 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                        <Settings className="h-2.5 w-2.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
                         <span>{project.categoryDisplay || project.categories.join(' / ')}</span>
                       </div>
 
                       {/* Title */}
-                      <h3 className="mt-2 text-sm font-bold leading-snug tracking-tight text-white sm:text-base md:text-[1rem] line-clamp-2">
+                      <h3 className="mt-2 text-sm font-bold leading-snug tracking-tight text-[var(--text-heading)] sm:text-base md:text-[1rem] line-clamp-2">
                         {project.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="mt-1.5 text-xs leading-relaxed text-zinc-400 line-clamp-2 sm:text-[13px]">
+                      <p className="mt-1.5 text-xs leading-relaxed text-[var(--text-muted)] line-clamp-2 sm:text-[13px]">
                         {project.description}
                       </p>
                     </div>
@@ -221,11 +233,11 @@ export function Projects() {
                           {project.featuredHighlights.slice(0, 3).map((highlight, hIdx) => (
                             <div
                               key={hIdx}
-                              className="flex items-center gap-1.5 text-[11px] font-medium text-zinc-300"
+                              className="flex items-center gap-1.5 text-[11px] font-medium text-[var(--text-secondary)]"
                             >
                               <HighlightIcon
                                 name={highlight.icon}
-                                className="h-3 w-3 text-amber-400 shrink-0"
+                                className="h-3 w-3 text-amber-600 dark:text-amber-400 shrink-0"
                               />
                               <span>{highlight.label}</span>
                             </div>
@@ -238,13 +250,13 @@ export function Projects() {
                         {project.technologies.slice(0, 6).map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-md border border-zinc-800 bg-[#131317] px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-400"
+                            className="rounded-md border border-[var(--border-card)] bg-[var(--bg-surface-alt)] dark:bg-[#131317] px-2 py-0.5 font-mono text-[10px] font-medium text-[var(--text-muted)]"
                           >
                             {tech}
                           </span>
                         ))}
                         {project.technologies.length > 6 && (
-                          <span className="rounded-md border border-zinc-800 bg-[#131317] px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-500">
+                          <span className="rounded-md border border-[var(--border-card)] bg-[var(--bg-surface-alt)] dark:bg-[#131317] px-2 py-0.5 font-mono text-[10px] font-medium text-[var(--text-subtle)]">
                             +{project.technologies.length - 6} more
                           </span>
                         )}
@@ -254,49 +266,56 @@ export function Projects() {
                     {/* Bottom: Action Buttons */}
                     <div className="flex flex-wrap items-center gap-2">
                       {/* View Details */}
-                      <button
+                      <motion.button
                         type="button"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
                         onClick={() => setActiveProject(project)}
                         className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 px-4 py-1.5 text-xs font-bold text-zinc-950 shadow-[0_0_14px_rgba(245,158,11,0.28)] transition-all duration-150 hover:brightness-110 hover:shadow-[0_0_22px_rgba(245,158,11,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
                       >
                         <span>View Details</span>
                         <ArrowRight className="h-3 w-3" aria-hidden="true" />
-                      </button>
+                      </motion.button>
 
                       {/* GitHub */}
                       {hasGithubUrl && (
-                        <a
+                        <motion.a
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`View ${project.title} source code on GitHub`}
-                          className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-zinc-700 bg-transparent px-4 py-1.5 text-xs font-semibold text-white transition-all duration-150 hover:border-amber-400 hover:text-amber-300 hover:bg-amber-400/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+                          className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 bg-transparent px-4 py-1.5 text-xs font-semibold text-[var(--text-heading)] transition-all duration-150 hover:border-amber-500 dark:hover:border-amber-400 hover:text-amber-700 dark:hover:text-amber-300 hover:bg-amber-500/10 dark:hover:bg-amber-400/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
                         >
                           <Github className="h-3 w-3" aria-hidden="true" />
                           <span>GitHub</span>
-                        </a>
+                        </motion.a>
                       )}
 
                       {/* Live Demo */}
                       {hasLiveUrl && (
-                        <a
+                        <motion.a
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Open ${project.title} live deployment`}
-                          className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900/60 px-3.5 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-600 hover:text-white"
+                          className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[var(--border-card)] bg-[var(--bg-surface-alt)] dark:bg-zinc-900/60 px-3.5 py-1.5 text-xs font-medium text-[var(--text-secondary)] transition-colors hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-[var(--text-heading)]"
                         >
                           <ExternalLink className="h-3 w-3" aria-hidden="true" />
                           <span>Demo</span>
-                        </a>
+                        </motion.a>
                       )}
                     </div>
                   </div>
                 </div>
               </motion.article>
-            );
-          })}
-        </div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       {/* Reusable Project Details Modal */}

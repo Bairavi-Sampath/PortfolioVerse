@@ -9,7 +9,7 @@ export function ResumeSection() {
   return (
     <section
       id="resume"
-      className="border-b border-zinc-900 bg-[#0B0B0E] py-16 sm:py-20"
+      className="border-b border-[var(--border-section)] bg-[var(--bg-secondary)] py-16 sm:py-20"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -17,17 +17,17 @@ export function ResumeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col justify-between gap-6 rounded-2xl border border-zinc-800 bg-[#111114] p-6 shadow-xl transition-all duration-200 hover:border-zinc-700/80 sm:p-10 lg:flex-row lg:items-center"
+          className="flex flex-col justify-between gap-6 rounded-2xl border border-[var(--border-card)] bg-[var(--bg-surface)] p-6 shadow-sm dark:shadow-xl transition-all duration-200 hover:border-zinc-300 dark:hover:border-zinc-700/80 sm:p-10 lg:flex-row lg:items-center"
         >
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-yellow-400">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-amber-600 dark:text-yellow-400">
               <FileText className="h-4 w-4" aria-hidden="true" />
               <span>Resume</span>
             </div>
-            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-[var(--text-heading)] sm:text-3xl">
               Review my complete resume
             </h2>
-            <p className="mt-2.5 text-sm leading-relaxed text-zinc-400 sm:text-base">
+            <p className="mt-2.5 text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
               Preview my academic record, AI/ML &amp; full-stack projects, Springer research
               publication, and technical certifications directly in the embedded viewer.
             </p>
@@ -39,7 +39,7 @@ export function ResumeSection() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => setViewerOpen(true)}
-              className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-bold text-zinc-950 whitespace-nowrap shrink-0 shadow-[0_0_24px_rgba(250,204,21,0.28)] transition-all duration-150 hover:bg-yellow-300 hover:shadow-[0_0_32px_rgba(250,204,21,0.42)] focus-visible:outline-2 focus-visible:outline-yellow-400"
+              className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-amber-500 dark:bg-yellow-400 px-6 py-2.5 text-sm font-bold text-zinc-950 whitespace-nowrap shrink-0 shadow-[0_6px_20px_rgba(245,158,11,0.28)] dark:shadow-[0_0_24px_rgba(250,204,21,0.28)] transition-all duration-150 hover:bg-amber-400 dark:hover:bg-yellow-300 hover:shadow-[0_8px_28px_rgba(245,158,11,0.38)] dark:hover:shadow-[0_0_32px_rgba(250,204,21,0.42)] focus-visible:outline-2 focus-visible:outline-yellow-400"
             >
               <Eye className="h-4 w-4" aria-hidden="true" />
               View Resume
